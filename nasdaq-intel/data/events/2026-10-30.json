@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-10-30",
-  "generated_at": "2026-10-29T16:29:56.984826+00:00",
+  "generated_at": "2026-10-29T16:56:59.794906+00:00",
   "llm_mode": "规则回退（关键词启发式）",
   "companies": [
     {
@@ -13,7 +13,7 @@
       "company_name": "Alphabet Inc.",
       "market_cap": 7910119400000.0,
       "market_cap_display": "$7.91T",
-      "market_cap_timestamp": "2026-10-29T16:29:56.984826+00:00",
+      "market_cap_timestamp": "2026-10-29T16:56:59.794906+00:00",
       "sector": "Technology",
       "industry": "Computer Software: Programming Data Processing",
       "country": "United States"
@@ -27,7 +27,7 @@
       "company_name": "NVIDIA Corporation",
       "market_cap": 5190658000000.0,
       "market_cap_display": "$5.19T",
-      "market_cap_timestamp": "2026-10-29T16:29:56.984826+00:00",
+      "market_cap_timestamp": "2026-10-29T16:56:59.794906+00:00",
       "sector": "Technology",
       "industry": "Semiconductors",
       "country": "United States"
@@ -41,9 +41,107 @@
       "company_name": "Apple Inc.",
       "market_cap": 5017916909400.0,
       "market_cap_display": "$5.02T",
-      "market_cap_timestamp": "2026-10-29T16:29:56.984826+00:00",
+      "market_cap_timestamp": "2026-10-29T16:56:59.794906+00:00",
       "sector": "Technology",
       "industry": "Computer Manufacturing",
+      "country": "United States"
+    },
+    {
+      "rank": 4,
+      "ticker": "MSFT",
+      "tickers": [
+        "MSFT"
+      ],
+      "company_name": "Microsoft Corporation",
+      "market_cap": 3943506852056.0,
+      "market_cap_display": "$3.94T",
+      "market_cap_timestamp": "2026-10-29T16:56:59.794906+00:00",
+      "sector": "Technology",
+      "industry": "Computer Software: Prepackaged Software",
+      "country": "United States"
+    },
+    {
+      "rank": 5,
+      "ticker": "AMZN",
+      "tickers": [
+        "AMZN"
+      ],
+      "company_name": "Amazon.com Inc.",
+      "market_cap": 2746195435431.0,
+      "market_cap_display": "$2.75T",
+      "market_cap_timestamp": "2026-10-29T16:56:59.794906+00:00",
+      "sector": "Consumer Discretionary",
+      "industry": "Catalog/Specialty Distribution",
+      "country": "United States"
+    },
+    {
+      "rank": 6,
+      "ticker": "SPCX",
+      "tickers": [
+        "SPCX"
+      ],
+      "company_name": "Space Exploration Technologies Corp.",
+      "market_cap": 1972377882458.0,
+      "market_cap_display": "$1.97T",
+      "market_cap_timestamp": "2026-10-29T16:56:59.794906+00:00",
+      "sector": "Technology",
+      "industry": "Computer Software: Programming Data Processing",
+      "country": "United States"
+    },
+    {
+      "rank": 7,
+      "ticker": "AVGO",
+      "tickers": [
+        "AVGO"
+      ],
+      "company_name": "Broadcom Inc.",
+      "market_cap": 1679410722806.0,
+      "market_cap_display": "$1.68T",
+      "market_cap_timestamp": "2026-10-29T16:56:59.794906+00:00",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "country": "United States"
+    },
+    {
+      "rank": 8,
+      "ticker": "TSLA",
+      "tickers": [
+        "TSLA"
+      ],
+      "company_name": "Tesla Inc.",
+      "market_cap": 1597783816932.0,
+      "market_cap_display": "$1.60T",
+      "market_cap_timestamp": "2026-10-29T16:56:59.794906+00:00",
+      "sector": "Industrials",
+      "industry": "Auto Manufacturing",
+      "country": "United States"
+    },
+    {
+      "rank": 9,
+      "ticker": "META",
+      "tickers": [
+        "META"
+      ],
+      "company_name": "Meta Platforms Inc.",
+      "market_cap": 1565672205050.0,
+      "market_cap_display": "$1.57T",
+      "market_cap_timestamp": "2026-10-29T16:56:59.794906+00:00",
+      "sector": "Technology",
+      "industry": "Computer Software: Programming Data Processing",
+      "country": "United States"
+    },
+    {
+      "rank": 10,
+      "ticker": "MU",
+      "tickers": [
+        "MU"
+      ],
+      "company_name": "Micron Technology Inc.",
+      "market_cap": 1112449244735.0,
+      "market_cap_display": "$1.11T",
+      "market_cap_timestamp": "2026-10-29T16:56:59.794906+00:00",
+      "sector": "Technology",
+      "industry": "Semiconductors",
       "country": "United States"
     }
   ],
@@ -72,7 +170,9 @@
           "url": "https://www.nasdaq.com/articles/touch-arrives-macbook-pro",
           "published_date": "2026-10-29"
         }
-      ]
+      ],
+      "related_tickers": [],
+      "related_companies": []
     },
     {
       "event_key": "googl-2026-10-29-cb7671d6325e",
@@ -98,7 +198,65 @@
           "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000084/goog-20260930.htm",
           "published_date": "2026-10-29"
         }
-      ]
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-10-29-c7b6c483fc17",
+      "ticker": "NVDA",
+      "title": "See Which Recent 13F Filers Hold NVDA",
+      "category": "other",
+      "importance": 3,
+      "confidence": 0.6,
+      "is_duplicate": false,
+      "fact_summary": "At Holdings Channel, we have reviewed the latest batch of the 53 most recent 13F filings for the 09/30/2026 reporting period, and noticed that NVIDIA Corp (Symbol: NVDA) was held by 40 of these funds. When hedge fund managers appear to be thinking alike, we find it is a good ide",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/see-which-recent-13f-filers-hold-nvda"
+      ],
+      "needs_verification": true,
+      "content_type": "news",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / BNK Invest",
+          "publisher": "BNK Invest",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/see-which-recent-13f-filers-hold-nvda",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-10-29-250491791913",
+      "ticker": "GOOGL",
+      "title": "Alphabet Crushed Cloud Expectations, But the AI Bills Are Coming Due",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet shares tumbled more than 11% after the tech giant posted its first bottom-line earnings miss since late 2022.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/alphabet-crushed-cloud-expectations-ai-bills-are-coming-due"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/alphabet-crushed-cloud-expectations-ai-bills-are-coming-due",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
     },
     {
       "event_key": "googl-2026-10-29-007f43e8b461",
@@ -124,7 +282,9 @@
           "url": "https://www.nasdaq.com/articles/anthropic-investors-beware-ipos-significantly-underperform-market-year-1",
           "published_date": "2026-10-29"
         }
-      ]
+      ],
+      "related_tickers": [],
+      "related_companies": []
     },
     {
       "event_key": "googl-2026-10-29-895c830c35bf",
@@ -150,7 +310,9 @@
           "url": "https://www.nasdaq.com/articles/alphabet-stock-avoid-or-once-decade-buy-dip",
           "published_date": "2026-10-29"
         }
-      ]
+      ],
+      "related_tickers": [],
+      "related_companies": []
     },
     {
       "event_key": "googl-2026-10-29-7cfc6419663f",
@@ -159,7 +321,7 @@
       "category": "capital",
       "importance": 2,
       "confidence": 0.45,
-      "is_duplicate": false,
+      "is_duplicate": true,
       "fact_summary": "Alphabet, Amazon, and Microsoft hold noncancelable minimum-spending commitments from Anthropic of at least $114.5 billion, $110 billion, and $44.9 billion, respectively.",
       "source_urls": [
         "https://www.nasdaq.com/articles/alphabet-amazon-spacex-microsoft-broadcom-and-amd-are-counting-anthropics-ipo-not-all"
@@ -175,6 +337,25 @@
           "kind": "news",
           "url": "https://www.nasdaq.com/articles/alphabet-amazon-spacex-microsoft-broadcom-and-amd-are-counting-anthropics-ipo-not-all",
           "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [
+        "AMZN",
+        "AVGO",
+        "MSFT"
+      ],
+      "related_companies": [
+        {
+          "ticker": "AMZN",
+          "company_name": "Amazon.com Inc."
+        },
+        {
+          "ticker": "AVGO",
+          "company_name": "Broadcom Inc."
+        },
+        {
+          "ticker": "MSFT",
+          "company_name": "Microsoft Corporation"
         }
       ]
     },
@@ -202,7 +383,9 @@
           "url": "https://www.nasdaq.com/articles/nvidia-just-disclosed-18-billion-stake-spacex-heres-what-jensen-huang-sees-market-doesnt",
           "published_date": "2026-10-29"
         }
-      ]
+      ],
+      "related_tickers": [],
+      "related_companies": []
     },
     {
       "event_key": "nvda-2026-10-29-0ba00fb77327",
@@ -228,7 +411,9 @@
           "url": "https://www.nasdaq.com/articles/nvdas-gross-margin-faces-pressure-can-it-offset-rising-memory-costs",
           "published_date": "2026-10-29"
         }
-      ]
+      ],
+      "related_tickers": [],
+      "related_companies": []
     },
     {
       "event_key": "nvda-2026-10-29-0d03f139111c",
@@ -254,7 +439,9 @@
           "url": "https://www.nasdaq.com/articles/nvidias-108-billion-earnings-test-why-next-forecast-matters-more",
           "published_date": "2026-10-29"
         }
-      ]
+      ],
+      "related_tickers": [],
+      "related_companies": []
     },
     {
       "event_key": "nvda-2026-10-29-ad5bb3db9bca",
@@ -280,7 +467,9 @@
           "url": "https://www.nasdaq.com/articles/nvidia-shareholders-have-major-reason-be-bullish-after-jensen-huangs-latest-announcement",
           "published_date": "2026-10-29"
         }
-      ]
+      ],
+      "related_tickers": [],
+      "related_companies": []
     },
     {
       "event_key": "aapl-2026-10-29-62ac271cb670",
@@ -306,7 +495,9 @@
           "url": "https://www.nasdaq.com/articles/apple-unveils-its-first-ever-touchscreen-macbook-pro-should-investors-be-concerned-about",
           "published_date": "2026-10-29"
         }
-      ]
+      ],
+      "related_tickers": [],
+      "related_companies": []
     },
     {
       "event_key": "aapl-2026-10-29-59fefcc9ed86",
@@ -332,7 +523,485 @@
           "url": "https://www.nasdaq.com/articles/hpq-vs-aapl-which-computer-stock-offers-better-investment-potential",
           "published_date": "2026-10-29"
         }
-      ]
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "msft-2026-10-29-d920b142aa8a",
+      "ticker": "MSFT",
+      "title": "CRWV vs. MSFT: Which AI Cloud Stock Offers Better Upside Potential?",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "CoreWeave offers higher potential upside from AI infrastructure growth, while Microsoft's Azure momentum, diversified business and cash generation provide a lower-risk path to AI gains.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/crwv-vs-msft-which-ai-cloud-stock-offers-better-upside-potential"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Microsoft Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/crwv-vs-msft-which-ai-cloud-stock-offers-better-upside-potential",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "msft-2026-10-29-6b338e97f035",
+      "ticker": "MSFT",
+      "title": "Microsoft: 3 Key Takeaways for Long-Term Investors",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Microsoft Cloud revenue reached $63.9 billion, accelerating to 30% growth.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/microsoft-3-key-takeaways-long-term-investors"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Microsoft Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/microsoft-3-key-takeaways-long-term-investors",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "amzn-2026-10-29-db742d1fff56",
+      "ticker": "AMZN",
+      "title": "Is Amazon's $220 Billion Spending Plan Worth It?",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Amazon (NASDAQ:AMZN) enters its next earnings report with AWS growing 37% and a $496 billion backlog. That demand is hard to ignore. Yet with capital spending planned near $220 billion, investors need proof that new capacity can become revenue and cash flow. Three numbers could m",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/amazons-220-billion-spending-plan-worth-it"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Amazon.com Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/amazons-220-billion-spending-plan-worth-it",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "amzn-2026-10-29-b2813f2b49a3",
+      "ticker": "AMZN",
+      "title": "Is Amazon (AMZN) a 'Buy' Ahead of Earnings?",
+      "category": "capital",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Substantial capital expenditure requirements for AI infrastructure continue to tighten financial resources.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/amazon-amzn-buy-ahead-earnings"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Amazon.com Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/amazon-amzn-buy-ahead-earnings",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "avgo-2026-10-29-d3bd59aa3380",
+      "ticker": "AVGO",
+      "title": "3 AI Stocks to Buy and Hold Through 2030",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Data center spending could require $3 trillion in the next three years, and Iren, Broadcom, and TSMC each supply a different layer.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/3-ai-stocks-buy-and-hold-through-2030"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Broadcom Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/3-ai-stocks-buy-and-hold-through-2030",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "tsla-2026-10-29-c5cab803e951",
+      "ticker": "TSLA",
+      "title": "Tesla vs. Ford: Which Stock Has an Edge After Q3 Earnings?",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "TSLA looks better positioned after Q3 earnings, backed by improving vehicle demand, margins and robotaxi progress, while F faces rising costs and EV losses.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/tesla-vs-ford-which-stock-has-edge-after-q3-earnings"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Tesla Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/tesla-vs-ford-which-stock-has-edge-after-q3-earnings",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "tsla-2026-10-29-e82cc9294536",
+      "ticker": "TSLA",
+      "title": "Should You Buy Tesla Stock Right Now? The Answer Might Surprise You.",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Despite the hype surrounding Tesla's Cybercab robotaxi and Optimus robot, over 70% of the company's revenue still comes from selling passenger electric vehicles (EVs).",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/should-you-buy-tesla-stock-right-now-answer-might-surprise-you"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Tesla Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/should-you-buy-tesla-stock-right-now-answer-might-surprise-you",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "tsla-2026-10-29-92f5afae7a12",
+      "ticker": "TSLA",
+      "title": "Great News for Tesla Stock Investors as a Merger with SpaceX is More Likely",
+      "category": "capital",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Should you buy stock in Space Exploration Technologies right now? Before you buy stock in Space Exploration Technologies, consider this:Missed AI’s \"Act 1\"? Act 2 Could Be 15x Bigger. Most investors think they missed the AI boat because they didn't buy Nvidia in 2005. But accordi",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/great-news-tesla-stock-investors-merger-spacex-more-likely"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Tesla Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/great-news-tesla-stock-investors-merger-spacex-more-likely",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "tsla-2026-10-29-5f6dcd987628",
+      "ticker": "TSLA",
+      "title": "The Zacks Analyst Blog Highlights Tesla, Netflix, American Express, InterGroup and Moving iMage Technologies",
+      "category": "capital",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Tesla, Netflix and American Express headline Zacks' latest research, alongside two micro-cap stocks, as growth opportunities and financial risks shape their investment outlooks.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/zacks-analyst-blog-highlights-tesla-netflix-american-express-intergroup-and-moving-image"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Tesla Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/zacks-analyst-blog-highlights-tesla-netflix-american-express-intergroup-and-moving-image",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "tsla-2026-10-29-9eca10b78ce4",
+      "ticker": "TSLA",
+      "title": "The Zacks Analyst Blog Highlights Tesla and SpaceX",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Tesla shares rebounded 9.5% as strong vehicle demand, improving margins and positive cash flow bolster its outlook, while a potential SpaceX merger adds another catalyst.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/zacks-analyst-blog-highlights-tesla-and-spacex-0"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Tesla Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/zacks-analyst-blog-highlights-tesla-and-spacex-0",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "tsla-2026-10-29-290cb53e3f13",
+      "ticker": "TSLA",
+      "title": "Tesla's Free Cash Flow Beat: Good News, Bad News, and What It Means for the Future",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Optimus and Robotaxi timelines may be delayed, but capital discipline is evident.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/teslas-free-cash-flow-beat-good-news-bad-news-and-what-it-means-future"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Tesla Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/teslas-free-cash-flow-beat-good-news-bad-news-and-what-it-means-future",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "tsla-2026-10-29-5e2665340ffc",
+      "ticker": "TSLA",
+      "title": "Tesla Is Flying in Europe, and We Aren't Talking About the Roadster -- 1 Big Concern Remains",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Tesla registered a record 66,035 vehicles in Europe in September.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/tesla-flying-europe-and-we-arent-talking-about-roadster-1-big-concern-remains"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Tesla Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/tesla-flying-europe-and-we-arent-talking-about-roadster-1-big-concern-remains",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "mu-2026-10-29-7bb4f96ad865",
+      "ticker": "MU",
+      "title": "Prediction: $100 a Month Invested in Micron Will Be Worth This Much by 2030",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Micron delivered massive gains over the past decade.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/prediction-100-month-invested-micron-will-be-worth-much-2030"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Micron Technology Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/prediction-100-month-invested-micron-will-be-worth-much-2030",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "mu-2026-10-29-55199505382a",
+      "ticker": "MU",
+      "title": "Micron Is Down 17% Over the Past Month. Is This AI Stock Still a Buy?",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Micron stock has tumbled as some investors worry that tech companies are spending too much on AI.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/micron-down-17-over-past-month-ai-stock-still-buy"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Micron Technology Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/micron-down-17-over-past-month-ai-stock-still-buy",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "mu-2026-10-29-a52d8720ef2d",
+      "ticker": "MU",
+      "title": "5 Stocks With High ROE to Bet on as AI-Infused Rally Spurs Markets",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "MU, TEL, ANET, VICI and URI stand out as high-ROE stocks amid an AI-driven market rally.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/5-stocks-high-roe-bet-ai-infused-rally-spurs-markets"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Micron Technology Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/5-stocks-high-roe-bet-ai-infused-rally-spurs-markets",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "mu-2026-10-29-9cc6f423bc92",
+      "ticker": "MU",
+      "title": "Why Micron (MU) is a Top Value Stock for the Long-Term",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Whether you're a value, growth, or momentum investor, finding strong stocks becomes easier with the Zacks Style Scores, a top feature of the Zacks Premium research service.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/why-micron-mu-top-value-stock-long-term"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Micron Technology Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/why-micron-mu-top-value-stock-long-term",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "mu-2026-10-29-97dc29ed2969",
+      "ticker": "MU",
+      "title": "Best Growth Stocks to Buy for October 29th",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "ATI, MU and VLO made it to the Zacks Rank #1 (Strong Buy) growth stocks list on October 29th, 2026.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/best-growth-stocks-buy-october-29th"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Micron Technology Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/best-growth-stocks-buy-october-29th",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
     },
     {
       "event_key": "googl-2026-10-29-31a296ea8248",
@@ -358,7 +1027,9 @@
           "url": "https://www.nasdaq.com/articles/dow-movers-googl-honiv",
           "published_date": "2026-10-29"
         }
-      ]
+      ],
+      "related_tickers": [],
+      "related_companies": []
     },
     {
       "event_key": "googl-2026-10-29-ff798f0ab65b",
@@ -367,12 +1038,13 @@
       "category": "technology",
       "importance": 1,
       "confidence": 0.45,
-      "is_duplicate": false,
-      "fact_summary": "The S&P 500 Index ($SPX ) (SPY ) is down -0.43%, the Dow Jones Industrial Average ($DOWI ) (DIA ) is down -0.45%, and the Nasdaq 100 Index ($IUXX ) (QQQ ) is down -1.47%. December E-mini S&P futures (ESZ26 ) are down -0.41%, and December E-mini Nasdaq futures (NQZ26...",
+      "is_duplicate": true,
+      "fact_summary": "The S&P 500 Index ($SPX ) (SPY ) is down -0.27%, the Dow Jones Industrial Average ($DOWI ) (DIA ) is down -0.26%, and the Nasdaq 100 Index ($IUXX ) (QQQ ) is down -1.20%. December E-mini S&P futures (ESZ26 ) are down -0.34%, and December E-mini Nasdaq futures (NQZ26...",
       "source_urls": [
+        "https://www.nasdaq.com/articles/stocks-trade-lower-alphabet-disappoints-and-chip-stocks-fall-0",
         "https://www.nasdaq.com/articles/stocks-trade-lower-alphabet-disappoints-and-chip-stocks-fall"
       ],
-      "needs_verification": true,
+      "needs_verification": false,
       "content_type": "opinion",
       "mode": "rule",
       "company_name": "Alphabet Inc.",
@@ -381,10 +1053,19 @@
           "name": "Nasdaq News / Barchart",
           "publisher": "Barchart",
           "kind": "news",
+          "url": "https://www.nasdaq.com/articles/stocks-trade-lower-alphabet-disappoints-and-chip-stocks-fall-0",
+          "published_date": "2026-10-29"
+        },
+        {
+          "name": "Nasdaq News / Barchart",
+          "publisher": "Barchart",
+          "kind": "news",
           "url": "https://www.nasdaq.com/articles/stocks-trade-lower-alphabet-disappoints-and-chip-stocks-fall",
           "published_date": "2026-10-29"
         }
-      ]
+      ],
+      "related_tickers": [],
+      "related_companies": []
     },
     {
       "event_key": "googl-2026-10-29-17a4738bea04",
@@ -426,31 +1107,19 @@
           "url": "https://www.nasdaq.com/articles/alphabet-googl-q3-2026-earnings-call-transcript",
           "published_date": "2026-10-29"
         }
-      ]
-    },
-    {
-      "event_key": "nvda-2026-10-29-aaaf13096b95",
-      "ticker": "NVDA",
-      "title": "Zacks Earnings Trends Highlights: Micron, Nvidia and Alphabet",
-      "category": "financial",
-      "importance": 1,
-      "confidence": 0.45,
-      "is_duplicate": false,
-      "fact_summary": "S&P 500 third-quarter earnings are up 32.6% as Micron, Nvidia and Alphabet drive tech growth, while rising estimates point to stronger earnings momentum in Q4 2026 and 2027.",
-      "source_urls": [
-        "https://www.nasdaq.com/articles/zacks-earnings-trends-highlights-micron-nvidia-and-alphabet-1"
       ],
-      "needs_verification": true,
-      "content_type": "opinion",
-      "mode": "rule",
-      "company_name": "NVIDIA Corporation",
-      "sources": [
+      "related_tickers": [
+        "MU",
+        "NVDA"
+      ],
+      "related_companies": [
         {
-          "name": "Nasdaq News / Zacks",
-          "publisher": "Zacks",
-          "kind": "news",
-          "url": "https://www.nasdaq.com/articles/zacks-earnings-trends-highlights-micron-nvidia-and-alphabet-1",
-          "published_date": "2026-10-29"
+          "ticker": "MU",
+          "company_name": "Micron Technology Inc."
+        },
+        {
+          "ticker": "NVDA",
+          "company_name": "NVIDIA Corporation"
         }
       ]
     },
@@ -478,7 +1147,73 @@
           "url": "https://www.nasdaq.com/articles/nvidia-looks-cheap-heres-1-reason-id-still-be-cautious",
           "published_date": "2026-10-29"
         }
-      ]
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "msft-2026-10-29-66a950a7a1f2",
+      "ticker": "MSFT",
+      "title": "Microsoft (MSFT) Q1 2027 Earnings Call Transcript",
+      "category": "financial",
+      "importance": 1,
+      "confidence": 0.45,
+      "is_duplicate": true,
+      "fact_summary": "@media (max-width: 768px) { .image-container { width: 100% !important; float: none !important; margin: 0 0 1rem 0 !important; } } Image source: The Mo",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/microsoft-q1-earnings-beat-estimates-cloud-accelerates",
+        "https://www.nasdaq.com/articles/microsoft-msft-q1-2027-earnings-call-transcript"
+      ],
+      "needs_verification": false,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Microsoft Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/microsoft-q1-earnings-beat-estimates-cloud-accelerates",
+          "published_date": "2026-10-29"
+        },
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/microsoft-msft-q1-2027-earnings-call-transcript",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "tsla-2026-10-29-42e2d8bd66ac",
+      "ticker": "TSLA",
+      "title": "Opinion: While the Odds of a SpaceX-Tesla Merger Are Climbing, Combining 2 Wrongs Won't Make a Right on Wall Street",
+      "category": "capital",
+      "importance": 1,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Trillionaire Elon Musk, who oversees Space Exploration Technologies (SpaceX) and Tesla, has a phenomenal track record of making investors richer.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/opinion-while-odds-spacex-tesla-merger-are-climbing-combining-2-wrongs-wont-make-right"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Tesla Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/opinion-while-odds-spacex-tesla-merger-are-climbing-combining-2-wrongs-wont-make-right",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
     }
   ]
 }

@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from ..llm import LLMClient, LLMError
-from .normalize import EventCluster
+from .normalize import EventCluster, extract_amounts
 
 CATEGORIES = {"technology", "capital", "business", "financial", "other"}
 
@@ -57,7 +57,6 @@ _ROUTINE_MARKERS = [
     "what to watch", "preview", "how to", "trading higher", "trading lower",
     "stock moves", "shares are", "week ahead",
 ]
-_AMOUNT_RE = re.compile(r"\$\s?([0-9]+(?:\.[0-9]+)?)\s?(trillion|billion|million|bn|b|m)\b", re.I)
 
 # 这些关键词是词干（introduces/introducing、advertised/advertising），按前缀匹配；
 # 其余关键词必须整词匹配，避免 "ai" 命中 "airline"、"deal" 命中 "dealer" 这类误判。
@@ -80,21 +79,6 @@ def _match_category(text: str) -> tuple[str, dict[str, int]]:
     return max(scores.items(), key=lambda kv: kv[1])[0], scores
 
 
-def _extract_amounts(text: str) -> list[float]:
-    values: list[float] = []
-    for amount, unit in _AMOUNT_RE.findall(text):
-        number = float(amount)
-        unit = unit.lower()
-        if unit.startswith("t"):
-            number *= 1e12
-        elif unit in ("billion", "bn", "b"):
-            number *= 1e9
-        else:
-            number *= 1e6
-        values.append(number)
-    return values
-
-
 def _content_type(primary: dict[str, Any], text: str) -> str:
     if primary.get("kind") in ("filing", "press_release"):
         return "official"
@@ -112,7 +96,7 @@ def _rule_score(cluster: EventCluster, threshold: int) -> dict[str, Any]:
     # 官方申报自带类别提示（如 10-Q / 10-K → 财务）
     if primary.get("category_hint"):
         category = primary["category_hint"]
-    amounts = _extract_amounts(text)
+    amounts = extract_amounts(text)
     biggest = max(amounts) if amounts else 0.0
     content_type = _content_type(primary, text)
 

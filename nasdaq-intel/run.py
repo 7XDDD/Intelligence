@@ -122,6 +122,7 @@ def cmd_run(args: argparse.Namespace) -> int:
     clusters = cluster_items(
         raw_news + raw_filings,
         threshold=float(cfg["dedupe"]["title_similarity_threshold"]),
+        companies=companies,
     )
     node("dedupe", "ok", f"{len(raw_news) + len(raw_filings)} 条原始材料 → {len(clusters)} 个事件")
 
@@ -270,6 +271,9 @@ def _serializable(event: dict) -> dict:
     cluster = event["_cluster"]
     out["company_name"] = cluster.company_name
     out["sources"] = cluster.sources
+    related = cluster.related_companies
+    out["related_tickers"] = [item["ticker"] for item in related]
+    out["related_companies"] = related
     return out
 
 

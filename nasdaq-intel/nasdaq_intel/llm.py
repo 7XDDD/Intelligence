@@ -152,21 +152,78 @@ class LLMClient:
             self.last_error = f"LLM 日志写入失败：{exc}"
 
 
+def _repair_json_strings(text: str) -> str:
+    """修复模型常见的 JSON 错误：字符串内部未转义的引号、换行、制表符。"""
+    out: list[str] = []
+    in_string = False
+    escaped = False
+    i = 0
+    length = len(text)
+    while i < length:
+        ch = text[i]
+        if not in_string:
+            if ch == '"':
+                in_string = True
+            out.append(ch)
+            i += 1
+            continue
+        if escaped:
+            out.append(ch)
+            escaped = False
+            i += 1
+            continue
+        if ch == "\\":
+            out.append(ch)
+            escaped = True
+            i += 1
+            continue
+        if ch == '"':
+            # 向后看第一个非空白字符：属于 : , } ] 才视为字符串结束，否则是正文里的引号
+            j = i + 1
+            while j < length and text[j] in " \t\r\n":
+                j += 1
+            if j >= length or text[j] in ":,}]":
+                out.append(ch)
+                in_string = False
+            else:
+                out.append('\\"')
+            i += 1
+            continue
+        if ch == "\n":
+            out.append("\\n")
+            i += 1
+            continue
+        if ch == "\r":
+            out.append("\\r")
+            i += 1
+            continue
+        if ch == "\t":
+            out.append("\\t")
+            i += 1
+            continue
+        out.append(ch)
+        i += 1
+    return "".join(out)
+
+
 def parse_json_loose(text: str) -> Any:
-    """容忍模型输出前后的代码围栏或解释性文字。"""
+    """容忍模型输出前后的代码围栏、解释性文字，以及字符串内未转义的引号/换行。"""
     cleaned = text.strip()
     cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned)
     cleaned = re.sub(r"\s*```$", "", cleaned)
-    try:
-        return json.loads(cleaned)
-    except ValueError:
-        pass
+
+    candidates = [cleaned]
     for start, end in (("{", "}"), ("[", "]")):
         s = cleaned.find(start)
         e = cleaned.rfind(end)
         if s != -1 and e > s:
+            candidates.append(cleaned[s : e + 1])
+
+    for candidate in candidates:
+        for attempt in (candidate, _repair_json_strings(candidate)):
             try:
-                return json.loads(cleaned[s : e + 1])
+                return json.loads(attempt, strict=False)
             except ValueError:
                 continue
-    raise LLMError(f"无法解析模型返回的 JSON：{text[:200]}")
+    snippet = re.sub(r"\s+", " ", text.strip())[:160]
+    raise LLMError(f"无法解析模型返回的 JSON：{snippet}")

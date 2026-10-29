@@ -79,6 +79,10 @@ def _event_block(idx: int, event: dict[str, Any], analysis: dict[str, Any] | Non
         f"- 公司：{cluster.company_name}（{event.get('ticker')}）｜分类：{category}｜"
         f"材料类型：{content_type}｜重要性：{event.get('importance')}/5｜置信度：{event.get('confidence')}"
     )
+    related = cluster.related_companies
+    if related:
+        names = "、".join(f"{r['company_name']}（{r['ticker']}）" for r in related[:4])
+        lines.append(f"- 关联公司：{names}（同一事件的多公司报道，已归并）")
     flags = []
     if event.get("needs_verification"):
         flags.append("待核验（来源不足 2 个）")
@@ -239,11 +243,18 @@ def build_report(
     limit_lines = ["", "## 六、数据局限与待验证事项", ""]
     if incomplete:
         limit_lines.append(f"- 排名状态：{snapshot.get('status')}；{'；'.join(snapshot.get('warnings') or [])}")
+    shown_errors: set[str] = set()
     if collection.get("errors"):
         for err in collection["errors"][:10]:
-            limit_lines.append(f"- 采集失败：{err}")
+            if err in shown_errors:
+                continue
+            shown_errors.add(err)
+            limit_lines.append(f"- 采集/分析异常：{err}")
     if run.get("errors"):
         for err in run["errors"][:10]:
+            if err in shown_errors:
+                continue
+            shown_errors.add(err)
             limit_lines.append(f"- 运行异常：{err}")
     if run.get("warnings"):
         for warning in run["warnings"][:10]:

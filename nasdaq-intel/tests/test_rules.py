@@ -10,15 +10,16 @@ import os
 import sys
 import tempfile
 import unittest
+from datetime import date
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from nasdaq_intel.llm import LLMClient, LLMError
+from nasdaq_intel.llm import LLMClient, LLMError, parse_json_loose
 from nasdaq_intel.pipeline.classify import classify_clusters
-from nasdaq_intel.pipeline.normalize import cluster_items
+from nasdaq_intel.pipeline.normalize import cluster_items, extract_amounts
 
 PROMPTS_DIR = PROJECT_ROOT / "prompts"
 DAY = "2026-10-29"
@@ -412,6 +413,203 @@ class PromptWiringTests(unittest.TestCase):
         self.assertTrue(entry["label"].startswith("analyze:"))
         self.assertIn(events[0]["event_key"], entry["label"])
         self.assertEqual(entry["parsed"]["facts"], payload["facts"])
+
+
+class ReportTests(unittest.TestCase):
+    def test_duplicate_errors_rendered_once(self) -> None:
+        from nasdaq_intel.pipeline.report import build_report
+
+        snapshot = {
+            "generated_at": "2026-10-29T12:00:00+00:00",
+            "data_source": "test",
+            "status": "ok",
+            "ranking_method": "market_cap_desc",
+            "universe_size": 10,
+            "companies": [],
+        }
+        markdown = build_report(
+            day=date(2026, 10, 29),
+            snapshot=snapshot,
+            prev_snapshot=None,
+            events=[],
+            analyses={},
+            llm_mode="规则回退（关键词启发式）",
+            run={
+                "status": "ok",
+                "finished_at": "2026-10-29T12:00:00+00:00",
+                "duration_seconds": 1,
+                "errors": ["E1"],
+                "warnings": [],
+            },
+            tz_name="America/New_York",
+            collection={"company_count": 0, "news_count": 0, "filing_count": 0, "errors": ["E1"]},
+        )
+        self.assertEqual(markdown.count("E1"), 1)
+
+
+class JsonRepairTests(unittest.TestCase):
+    def test_unescaped_quotes_inside_string(self) -> None:
+        raw = '{"event_key":"x","facts":["仅"电话会提及"这一点"],"source_urls":[]}'
+        parsed = parse_json_loose(raw)
+        self.assertEqual(parsed["facts"][0], '仅"电话会提及"这一点')
+
+    def test_literal_newline_inside_string(self) -> None:
+        raw = '{"facts":["第一行\n第二行"]}'
+        parsed = parse_json_loose(raw)
+        self.assertEqual(parsed["facts"][0], "第一行\n第二行")
+
+    def test_error_message_does_not_leak_payload(self) -> None:
+        with self.assertRaises(LLMError) as ctx:
+            parse_json_loose("{not json at all")
+        message = str(ctx.exception)
+        self.assertNotIn("\n", message)
+        self.assertLessEqual(len(message), 200)
+
+
+class CrossCompanyDedupeTests(unittest.TestCase):
+    def test_cross_language_same_investment_merges(self) -> None:
+        items = [
+            make_item(
+                ticker="META",
+                company_name="Meta Platforms Inc.",
+                title="Nvidia and AMD investing $4 billion in Meta's AI ambitions",
+                summary="Nvidia and AMD are putting $4 billion into Meta's AI infrastructure.",
+                url="https://a.example/meta-nvda",
+            ),
+            make_item(
+                ticker="NVDA",
+                company_name="NVIDIA Corporation",
+                title="NVIDIA与AMD向Meta AI投资40亿美元",
+                summary="英伟达与AMD向Meta的AI业务投资40亿美元。",
+                url="https://b.example/nvda-meta",
+            ),
+        ]
+        clusters = cluster_items(items)
+        self.assertEqual(len(clusters), 1)
+        cluster = clusters[0]
+        self.assertTrue(cluster.related_companies)
+        self.assertEqual(len(cluster.sources), 2)
+        self.assertEqual(len(cluster.items), 2)
+
+    def test_cross_company_regulatory_event_merges(self) -> None:
+        items = [
+            make_item(
+                ticker="AAPL",
+                company_name="Apple Inc.",
+                title="South Korea fines Google and Apple over app store payments",
+                summary="The regulator fined both companies and ordered corrective measures.",
+                url="https://a.example/fine",
+            ),
+            make_item(
+                ticker="GOOGL",
+                company_name="Alphabet Inc.",
+                title="Google and Apple fined by South Korea over app store rules",
+                summary="Both companies were fined for forcing payment methods.",
+                url="https://b.example/fine",
+            ),
+        ]
+        clusters = cluster_items(items)
+        self.assertEqual(len(clusters), 1)
+
+    def test_distinct_events_with_mutual_mentions_stay_separate(self) -> None:
+        items = [
+            make_item(
+                ticker="MSFT",
+                company_name="Microsoft Corporation",
+                title="Microsoft to invest $10 billion in Nvidia AI chips",
+                summary="Microsoft announced a $10 billion investment.",
+            ),
+            make_item(
+                ticker="NVDA",
+                company_name="NVIDIA Corporation",
+                title="Nvidia and Microsoft launch AI PC platform",
+                summary="The two companies unveiled a new platform.",
+            ),
+        ]
+        clusters = cluster_items(items)
+        self.assertEqual(len(clusters), 2)
+
+    def test_one_sided_mention_does_not_merge(self) -> None:
+        items = [
+            make_item(
+                ticker="AAPL",
+                company_name="Apple Inc.",
+                title="Apple launches new AI feature for developers",
+                summary="Apple introduced the feature at its event.",
+            ),
+            make_item(
+                ticker="GOOGL",
+                company_name="Alphabet Inc.",
+                title="Google says Apple's AI efforts lag behind",
+                summary="Google compared its models with Apple's.",
+            ),
+        ]
+        clusters = cluster_items(items)
+        self.assertEqual(len(clusters), 2)
+
+    def test_separate_earnings_reports_not_merged(self) -> None:
+        items = [
+            make_item(
+                ticker="MSFT",
+                company_name="Microsoft Corporation",
+                title="Microsoft and Alphabet just reported earnings, putting the AI boom to the test",
+                summary="Microsoft reported quarterly revenue of $70 billion.",
+                url="https://a.example/msft-earnings",
+            ),
+            make_item(
+                ticker="GOOGL",
+                company_name="Alphabet Inc.",
+                title="Alphabet Q3 earnings: how key metrics compare to Wall Street estimates",
+                summary="Alphabet reported quarterly revenue of $90 billion.",
+                url="https://b.example/googl-earnings",
+            ),
+        ]
+        clusters = cluster_items(items)
+        self.assertEqual(len(clusters), 2)
+
+    def test_chinese_amount_parsing(self) -> None:
+        self.assertEqual(extract_amounts("向Meta AI投资40亿美元")[0], 4e9)
+        self.assertEqual(extract_amounts("630亿美元SPV")[0], 6.3e10)
+
+    def test_merge_keeps_subject_company(self) -> None:
+        from nasdaq_intel.pipeline.normalize import (
+            EventCluster,
+            _cluster_weight,
+            build_company_lexicon,
+        )
+
+        items = [
+            make_item(
+                ticker="GOOGL",
+                company_name="Alphabet Inc.",
+                title="Alphabet Q3 earnings beat estimates",
+            ),
+            make_item(
+                ticker="MSFT",
+                company_name="Microsoft Corporation",
+                title="Alphabet Q3 earnings preview",
+            ),
+            make_item(
+                ticker="MSFT",
+                company_name="Microsoft Corporation",
+                title="Alphabet Q3 earnings metrics vs estimates",
+            ),
+        ]
+        lexicon = build_company_lexicon(items)
+        googl = EventCluster(
+            ticker="GOOGL",
+            company_name="Alphabet Inc.",
+            items=[items[0]],
+            norm_title="alphabet q3 earnings beat estimates",
+        )
+        msft = EventCluster(
+            ticker="MSFT",
+            company_name="Microsoft Corporation",
+            items=items[1:],
+            norm_title="alphabet q3 earnings preview",
+        )
+        # MSFT 材料更多，但标题都没提到自己；归并后应保留讲 Alphabet 的那条
+        self.assertLess(_cluster_weight(googl, lexicon), _cluster_weight(msft, lexicon))
 
 
 if __name__ == "__main__":
