@@ -1,0 +1,70 @@
+# 纳斯达克科技与资本情报系统 · MVP 配置
+# 所有路径均相对项目根目录
+
+project:
+  name: nasdaq-intel
+  # 报告展示用时区（数据统一以 UTC 保存）
+  report_timezone: America/New_York
+  data_dir: data
+  cache_dir: data/cache
+
+ranking:
+  # 追踪口径：纳斯达克交易所上市的公开交易公司，按总市值降序取前 N
+  exchange: NASDAQ
+  top_n: 10
+  # 低于该数量说明接口返回不完整，报告必须标注“排名不完整”
+  min_universe_size: 3000
+  exclude_etf: true
+  exclude_test_issues: true
+  # 同一公司多个股票代码（如 GOOG / GOOGL）合并为一家公司
+  merge_share_classes: true
+
+collect:
+  # 新闻窗口：上次成功运行之后 → 本次运行；首次运行回看 lookback_hours
+  lookback_hours: 24
+  news_providers:
+    - nasdaq_news
+    - prnewswire_rss
+  news_limit_per_request: 30
+  max_news_per_company: 25
+  # SEC 官方披露：8-K 重大事项、10-Q/10-K 定期报告、6-K 外国发行人
+  sec_forms:
+    - 8-K
+    - 8-K/A
+    - 10-Q
+    - 10-K
+    - 6-K
+  sec_max_per_company: 12
+  prnewswire_rss: https://www.prnewswire.com/rss/news-releases-list.rss
+
+dedupe:
+  # 同一公司、标题相似度达到该阈值视为疑似重复
+  title_similarity_threshold: 0.86
+
+analysis:
+  # 仅重要性 >= 该阈值的事件进入深度分析
+  importance_threshold: 4
+  max_deep_analysis: 6
+  max_events_in_report: 8
+
+llm:
+  # OpenAI 兼容接口；未配置 API Key 时自动降级为规则模式
+  provider: openai_compatible
+  base_url: https://api.openai.com/v1
+  model: gpt-4o-mini
+  api_key_env: OPENAI_API_KEY
+  temperature: 0.2
+  max_tokens: 1200
+  timeout: 90
+  # 报告正文是否交给 LLM 生成。MVP 默认 false：使用确定性模板，保证数字与来源不走样
+  generate_report: false
+
+http:
+  # 行情/新闻站点需要浏览器 UA，否则会被拒绝或长时间无响应
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+  # SEC 要求带联系方式的 UA，且请求频率不超过 10 次/秒
+  sec_user_agent: "NasdaqIntelMVP/0.1 (research; contact: you@example.com)"
+  timeout: 60
+  max_retries: 3
+  sec_min_interval: 0.2
+  nasdaq_min_interval: 0.3

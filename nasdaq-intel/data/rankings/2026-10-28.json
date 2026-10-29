@@ -1,0 +1,156 @@
+{
+  "as_of_date": "2026-10-28",
+  "generated_at": "2026-10-29T15:57:40.548505+00:00",
+  "data_source": "api.nasdaq.com/api/screener/stocks + nasdaqtrader.com 证券目录",
+  "exchange_filter": "NASDAQ",
+  "currency": "USD",
+  "ranking_method": "market_cap_desc (company-level, share classes merged)",
+  "universe_size": 3026,
+  "company_count": 3010,
+  "status": "ok",
+  "warnings": [],
+  "errors": [],
+  "companies": [
+    {
+      "rank": 1,
+      "ticker": "GOOGL",
+      "tickers": [
+        "GOOGL",
+        "GOOG"
+      ],
+      "company_name": "Alphabet Inc.",
+      "market_cap": 7910119400000.0,
+      "market_cap_display": "$7.91T",
+      "market_cap_timestamp": "2026-10-29T15:57:40.548505+00:00",
+      "sector": "Technology",
+      "industry": "Computer Software: Programming Data Processing",
+      "country": "United States"
+    },
+    {
+      "rank": 2,
+      "ticker": "NVDA",
+      "tickers": [
+        "NVDA"
+      ],
+      "company_name": "NVIDIA Corporation",
+      "market_cap": 5190658000000.0,
+      "market_cap_display": "$5.19T",
+      "market_cap_timestamp": "2026-10-29T15:57:40.548505+00:00",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "country": "United States"
+    },
+    {
+      "rank": 3,
+      "ticker": "AAPL",
+      "tickers": [
+        "AAPL"
+      ],
+      "company_name": "Apple Inc.",
+      "market_cap": 5017916909400.0,
+      "market_cap_display": "$5.02T",
+      "market_cap_timestamp": "2026-10-29T15:57:40.548505+00:00",
+      "sector": "Technology",
+      "industry": "Computer Manufacturing",
+      "country": "United States"
+    },
+    {
+      "rank": 4,
+      "ticker": "MSFT",
+      "tickers": [
+        "MSFT"
+      ],
+      "company_name": "Microsoft Corporation",
+      "market_cap": 3943506852056.0,
+      "market_cap_display": "$3.94T",
+      "market_cap_timestamp": "2026-10-29T15:57:40.548505+00:00",
+      "sector": "Technology",
+      "industry": "Computer Software: Prepackaged Software",
+      "country": "United States"
+    },
+    {
+      "rank": 5,
+      "ticker": "AMZN",
+      "tickers": [
+        "AMZN"
+      ],
+      "company_name": "Amazon.com Inc.",
+      "market_cap": 2746195435431.0,
+      "market_cap_display": "$2.75T",
+      "market_cap_timestamp": "2026-10-29T15:57:40.548505+00:00",
+      "sector": "Consumer Discretionary",
+      "industry": "Catalog/Specialty Distribution",
+      "country": "United States"
+    },
+    {
+      "rank": 6,
+      "ticker": "SPCX",
+      "tickers": [
+        "SPCX"
+      ],
+      "company_name": "Space Exploration Technologies Corp.",
+      "market_cap": 1972377882458.0,
+      "market_cap_display": "$1.97T",
+      "market_cap_timestamp": "2026-10-29T15:57:40.548505+00:00",
+      "sector": "Technology",
+      "industry": "Computer Software: Programming Data Processing",
+      "country": "United States"
+    },
+    {
+      "rank": 7,
+      "ticker": "AVGO",
+      "tickers": [
+        "AVGO"
+      ],
+      "company_name": "Broadcom Inc.",
+      "market_cap": 1679410722806.0,
+      "market_cap_display": "$1.68T",
+      "market_cap_timestamp": "2026-10-29T15:57:40.548505+00:00",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "country": "United States"
+    },
+    {
+      "rank": 8,
+      "ticker": "TSLA",
+      "tickers": [
+        "TSLA"
+      ],
+      "company_name": "Tesla Inc.",
+      "market_cap": 1597783816932.0,
+      "market_cap_display": "$1.60T",
+      "market_cap_timestamp": "2026-10-29T15:57:40.548505+00:00",
+      "sector": "Industrials",
+      "industry": "Auto Manufacturing",
+      "country": "United States"
+    },
+    {
+      "rank": 9,
+      "ticker": "META",
+      "tickers": [
+        "META"
+      ],
+      "company_name": "Meta Platforms Inc.",
+      "market_cap": 1565672205050.0,
+      "market_cap_display": "$1.57T",
+      "market_cap_timestamp": "2026-10-29T15:57:40.548505+00:00",
+      "sector": "Technology",
+      "industry": "Computer Software: Programming Data Processing",
+      "country": "United States"
+    },
+    {
+      "rank": 10,
+      "ticker": "MU",
+      "tickers": [
+        "MU"
+      ],
+      "company_name": "Micron Technology Inc.",
+      "market_cap": 1112449244735.0,
+      "market_cap_display": "$1.11T",
+      "market_cap_timestamp": "2026-10-29T15:57:40.548505+00:00",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "country": "United States"
+    }
+  ]
+}
