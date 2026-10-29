@@ -1,0 +1,484 @@
+{
+  "as_of_date": "2026-10-30",
+  "generated_at": "2026-10-29T16:29:56.984826+00:00",
+  "llm_mode": "规则回退（关键词启发式）",
+  "companies": [
+    {
+      "rank": 1,
+      "ticker": "GOOGL",
+      "tickers": [
+        "GOOGL",
+        "GOOG"
+      ],
+      "company_name": "Alphabet Inc.",
+      "market_cap": 7910119400000.0,
+      "market_cap_display": "$7.91T",
+      "market_cap_timestamp": "2026-10-29T16:29:56.984826+00:00",
+      "sector": "Technology",
+      "industry": "Computer Software: Programming Data Processing",
+      "country": "United States"
+    },
+    {
+      "rank": 2,
+      "ticker": "NVDA",
+      "tickers": [
+        "NVDA"
+      ],
+      "company_name": "NVIDIA Corporation",
+      "market_cap": 5190658000000.0,
+      "market_cap_display": "$5.19T",
+      "market_cap_timestamp": "2026-10-29T16:29:56.984826+00:00",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "country": "United States"
+    },
+    {
+      "rank": 3,
+      "ticker": "AAPL",
+      "tickers": [
+        "AAPL"
+      ],
+      "company_name": "Apple Inc.",
+      "market_cap": 5017916909400.0,
+      "market_cap_display": "$5.02T",
+      "market_cap_timestamp": "2026-10-29T16:29:56.984826+00:00",
+      "sector": "Technology",
+      "industry": "Computer Manufacturing",
+      "country": "United States"
+    }
+  ],
+  "events": [
+    {
+      "event_key": "aapl-2026-10-29-fe533774364d",
+      "ticker": "AAPL",
+      "title": "Touch Arrives On MacBook Pro",
+      "category": "technology",
+      "importance": 4,
+      "confidence": 0.6,
+      "is_duplicate": false,
+      "fact_summary": "Apple Inc. (AAPL) introduced MacBook Pro with PROLED XDR true to life colour, display and touch for the first time, featuring tandem OLED technology that delivers front-of-screen performance.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/touch-arrives-macbook-pro"
+      ],
+      "needs_verification": true,
+      "content_type": "news",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / RTTNews",
+          "publisher": "RTTNews",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/touch-arrives-macbook-pro",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "googl-2026-10-29-cb7671d6325e",
+      "ticker": "GOOGL",
+      "title": "Alphabet Inc. · 10-Q 季度报告",
+      "category": "financial",
+      "importance": 3,
+      "confidence": 0.6,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet Inc. 于 2026-10-29 向 SEC 提交 10-Q 文件。",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000084/goog-20260930.htm"
+      ],
+      "needs_verification": false,
+      "content_type": "official",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "SEC EDGAR",
+          "publisher": "SEC",
+          "kind": "filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000084/goog-20260930.htm",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "googl-2026-10-29-007f43e8b461",
+      "ticker": "GOOGL",
+      "title": "Anthropic Investors Beware: IPOs Significantly Underperform the Market in Year 1",
+      "category": "capital",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "While many IPO stocks experience sharp gains in early trading, on average, they underperform over their first three and six months.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/anthropic-investors-beware-ipos-significantly-underperform-market-year-1"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/anthropic-investors-beware-ipos-significantly-underperform-market-year-1",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "googl-2026-10-29-895c830c35bf",
+      "ticker": "GOOGL",
+      "title": "Is Alphabet a Stock to Avoid or a Once-in-a-Decade Buy on the Dip?",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet generated significant growth in the quarter, but earnings fell short of analysts’ estimates.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/alphabet-stock-avoid-or-once-decade-buy-dip"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/alphabet-stock-avoid-or-once-decade-buy-dip",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "googl-2026-10-29-7cfc6419663f",
+      "ticker": "GOOGL",
+      "title": "Alphabet, Amazon, SpaceX, Microsoft, Broadcom, and AMD Are Counting on Anthropic's IPO. Not All Their Contracts Are Equal.",
+      "category": "capital",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet, Amazon, and Microsoft hold noncancelable minimum-spending commitments from Anthropic of at least $114.5 billion, $110 billion, and $44.9 billion, respectively.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/alphabet-amazon-spacex-microsoft-broadcom-and-amd-are-counting-anthropics-ipo-not-all"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/alphabet-amazon-spacex-microsoft-broadcom-and-amd-are-counting-anthropics-ipo-not-all",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "nvda-2026-10-29-5316373e076e",
+      "ticker": "NVDA",
+      "title": "Nvidia Just Disclosed an $18 Billion Stake in SpaceX. Here's What Jensen Huang Sees That the Market Doesn't.",
+      "category": "capital",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "SpaceX is Nvidia's second-largest stock holding, behind only Intel.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/nvidia-just-disclosed-18-billion-stake-spacex-heres-what-jensen-huang-sees-market-doesnt"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/nvidia-just-disclosed-18-billion-stake-spacex-heres-what-jensen-huang-sees-market-doesnt",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "nvda-2026-10-29-0ba00fb77327",
+      "ticker": "NVDA",
+      "title": "NVDA's Gross Margin Faces Pressure: Can It Offset Rising Memory Costs?",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "NVIDIA faces rising memory costs and a projected gross margin dip to 74%, but strong AI demand, pricing power and Vera Rubin could help protect profitability.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/nvdas-gross-margin-faces-pressure-can-it-offset-rising-memory-costs"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/nvdas-gross-margin-faces-pressure-can-it-offset-rising-memory-costs",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "nvda-2026-10-29-0d03f139111c",
+      "ticker": "NVDA",
+      "title": "Nvidia's $108 Billion Earnings Test: Why the Next Forecast Matters More",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Nvidia (NASDAQ:NVDA) expects to report approximately $108 billion in quarterly revenue, but investors may be looking for something even more important: whether hyperscaler demand is accelerating again and whether its fourth-quarter outlook supports continued growth. With expectat",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/nvidias-108-billion-earnings-test-why-next-forecast-matters-more"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/nvidias-108-billion-earnings-test-why-next-forecast-matters-more",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "nvda-2026-10-29-ad5bb3db9bca",
+      "ticker": "NVDA",
+      "title": "Nvidia Shareholders Have a Major Reason to Be Bullish After Jensen Huang's Latest Announcement",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Nvidia CEO Jensen Huang recently highlighted his company's ability to deliver complete AI factory performance.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/nvidia-shareholders-have-major-reason-be-bullish-after-jensen-huangs-latest-announcement"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/nvidia-shareholders-have-major-reason-be-bullish-after-jensen-huangs-latest-announcement",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "aapl-2026-10-29-62ac271cb670",
+      "ticker": "AAPL",
+      "title": "Apple Unveils Its First-Ever Touchscreen MacBook Pro. Should Investors Be Concerned About the $2,899 Price Tag?",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Touch adds $400 (16% on the 14-inch) to the same-chip MacBook Pro, and every cheaper Mac stays on sale.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/apple-unveils-its-first-ever-touchscreen-macbook-pro-should-investors-be-concerned-about"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/apple-unveils-its-first-ever-touchscreen-macbook-pro-should-investors-be-concerned-about",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "aapl-2026-10-29-59fefcc9ed86",
+      "ticker": "AAPL",
+      "title": "HPQ vs. AAPL: Which Computer Stock Offers Better Investment Potential?",
+      "category": "capital",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "HP combines growing AI PC adoption, premium commercial device demand and a lower sales multiple to offer a valuation-driven alternative to Apple's expanding ecosystem.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/hpq-vs-aapl-which-computer-stock-offers-better-investment-potential"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/hpq-vs-aapl-which-computer-stock-offers-better-investment-potential",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "googl-2026-10-29-31a296ea8248",
+      "ticker": "GOOGL",
+      "title": "Dow Movers: GOOGL, HONIV",
+      "category": "other",
+      "importance": 1,
+      "confidence": 0.6,
+      "is_duplicate": false,
+      "fact_summary": "In early trading on Thursday, shares of Honeywell International topped the list of the day's best performing Dow Jones Industrial Average components, trading up 7.5%. Year to date, Honeywell International registers a 42.2% gain. And the worst performing Dow component thus far",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/dow-movers-googl-honiv"
+      ],
+      "needs_verification": true,
+      "content_type": "news",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / BNK Invest",
+          "publisher": "BNK Invest",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/dow-movers-googl-honiv",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "googl-2026-10-29-ff798f0ab65b",
+      "ticker": "GOOGL",
+      "title": "Stocks Trade Lower as Alphabet Disappoints and Chip Stocks Fall",
+      "category": "technology",
+      "importance": 1,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "The S&P 500 Index ($SPX ) (SPY ) is down -0.43%, the Dow Jones Industrial Average ($DOWI ) (DIA ) is down -0.45%, and the Nasdaq 100 Index ($IUXX ) (QQQ ) is down -1.47%. December E-mini S&P futures (ESZ26 ) are down -0.41%, and December E-mini Nasdaq futures (NQZ26...",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/stocks-trade-lower-alphabet-disappoints-and-chip-stocks-fall"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Barchart",
+          "publisher": "Barchart",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/stocks-trade-lower-alphabet-disappoints-and-chip-stocks-fall",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "googl-2026-10-29-17a4738bea04",
+      "ticker": "GOOGL",
+      "title": "Zacks Earnings Trends Highlights: Micron, Nvidia and Alphabet",
+      "category": "financial",
+      "importance": 1,
+      "confidence": 0.45,
+      "is_duplicate": true,
+      "fact_summary": "S&P 500 third-quarter earnings are up 32.6% as Micron, Nvidia and Alphabet drive tech growth, while rising estimates point to stronger earnings momentum in Q4 2026 and 2027.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/alphabet-stock-slides-earnings-woes-etfs-limelight",
+        "https://www.nasdaq.com/articles/zacks-earnings-trends-highlights-micron-nvidia-and-alphabet-1",
+        "https://www.nasdaq.com/articles/alphabet-googl-q3-2026-earnings-call-transcript"
+      ],
+      "needs_verification": false,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/alphabet-stock-slides-earnings-woes-etfs-limelight",
+          "published_date": "2026-10-29"
+        },
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/zacks-earnings-trends-highlights-micron-nvidia-and-alphabet-1",
+          "published_date": "2026-10-29"
+        },
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/alphabet-googl-q3-2026-earnings-call-transcript",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "nvda-2026-10-29-aaaf13096b95",
+      "ticker": "NVDA",
+      "title": "Zacks Earnings Trends Highlights: Micron, Nvidia and Alphabet",
+      "category": "financial",
+      "importance": 1,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "S&P 500 third-quarter earnings are up 32.6% as Micron, Nvidia and Alphabet drive tech growth, while rising estimates point to stronger earnings momentum in Q4 2026 and 2027.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/zacks-earnings-trends-highlights-micron-nvidia-and-alphabet-1"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/zacks-earnings-trends-highlights-micron-nvidia-and-alphabet-1",
+          "published_date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "event_key": "nvda-2026-10-29-47477b9e93e5",
+      "ticker": "NVDA",
+      "title": "Nvidia Looks Cheap. Here's 1 Reason I'd Still Be Cautious.",
+      "category": "financial",
+      "importance": 1,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Nvidia's price-to-earnings ratio is still nearly average for the S&P 500 despite its huge revenue growth.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/nvidia-looks-cheap-heres-1-reason-id-still-be-cautious"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/nvidia-looks-cheap-heres-1-reason-id-still-be-cautious",
+          "published_date": "2026-10-29"
+        }
+      ]
+    }
+  ]
+}

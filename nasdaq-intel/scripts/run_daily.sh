@@ -5,9 +5,23 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-# 需要 LLM 时在此注入（不要写入配置文件）：
-# export OPENAI_API_KEY="sk-..."
-# export LLM_BASE_URL="https://api.deepseek.com/v1"
-# export LLM_MODEL="deepseek-chat"
+# LLM 密钥放在项目根目录 .env（已加入 .gitignore 语义，勿写入 settings.yaml）：
+# OPENAI_API_KEY="sk-..."
+# LLM_BASE_URL="https://api.deepseek.com/v1"
+# LLM_MODEL="deepseek-chat"
+if [ -f .env ]; then
+  set -a
+  # shellcheck disable=SC1091
+  . ./.env
+  set +a
+fi
 
-python3 run.py run "$@"
+if [ -n "${PYTHON:-}" ]; then
+  :
+elif [ -x .venv/bin/python ]; then
+  PYTHON=.venv/bin/python
+else
+  PYTHON=python3
+fi
+
+"$PYTHON" run.py run "$@"

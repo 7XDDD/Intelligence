@@ -35,5 +35,4 @@ C. 尚未验证的假设
   "source_urls": ["..."]
 }
 
-事件与来源：
-{{verified_event_bundle}}
+事件与来源将以 JSON 形式在用户消息中给出（含 event_key、ticker、company、title、fact_summary、category、published_date、sources、source_materials）。

@@ -43,5 +43,4 @@
   ]
 }
 
-输入：
-{{news_items}}
+输入将以 JSON（{"news_items": [...]}）形式在用户消息中给出，字段包括 event_key、ticker、company、title、summary、source、kind、published_date、source_count。请逐条处理，event_key 原样返回，不遗漏、不新增。

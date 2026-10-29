@@ -49,15 +49,18 @@ analysis:
 
 llm:
   # OpenAI 兼容接口；未配置 API Key 时自动降级为规则模式
+  # 默认接 DeepSeek：在项目根目录 .env 写入 OPENAI_API_KEY=sk-xxx 即可启用
   provider: openai_compatible
-  base_url: https://api.openai.com/v1
-  model: gpt-4o-mini
+  base_url: https://api.deepseek.com/v1
+  model: deepseek-chat
   api_key_env: OPENAI_API_KEY
   temperature: 0.2
   max_tokens: 1200
   timeout: 90
   # 报告正文是否交给 LLM 生成。MVP 默认 false：使用确定性模板，保证数字与来源不走样
   generate_report: false
+  # 每次真实 LLM 调用都把原始输入/输出写入 data/llm_logs/YYYY-MM-DD.jsonl，便于复核
+  audit: true
 
 http:
   # 行情/新闻站点需要浏览器 UA，否则会被拒绝或长时间无响应

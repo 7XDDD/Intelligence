@@ -49,7 +49,11 @@ def analyze_events(
             ],
         }
         try:
-            raw = llm.chat_json(system_prompt, json.dumps(bundle, ensure_ascii=False, indent=1))
+            raw = llm.chat_json(
+                system_prompt,
+                json.dumps(bundle, ensure_ascii=False, indent=1),
+                label=f"analyze:{event['event_key']}",
+            )
             if isinstance(raw, dict):
                 results[event["event_key"]] = raw
         except LLMError as exc:

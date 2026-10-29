@@ -75,8 +75,23 @@ def _merge(base: dict, override: dict) -> dict:
     return out
 
 
+def _load_env_file(path: Path) -> None:
+    """读取项目根目录的 .env（KEY=VALUE），已存在的环境变量优先，避免密钥写进配置文件。"""
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        if key and key not in os.environ:
+            os.environ[key] = value.strip().strip('"').strip("'")
+
+
 def load_config(path: str | os.PathLike | None = None) -> dict[str, Any]:
     cfg_path = Path(path) if path else PROJECT_ROOT / "config" / "settings.yaml"
+    _load_env_file(PROJECT_ROOT / ".env")
     file_cfg: dict[str, Any] = {}
     if cfg_path.exists():
         with open(cfg_path, "r", encoding="utf-8") as fh:

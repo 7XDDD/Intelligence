@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 import time
 from datetime import date, datetime, timedelta, timezone
@@ -49,7 +50,10 @@ def cmd_run(args: argparse.Namespace) -> int:
         cache_dir=resolve_path(cfg, "cache_dir"),
     )
     http = build_http(cfg)
-    llm = LLMClient(cfg["llm"])
+    llm = LLMClient(
+        cfg["llm"],
+        log_dir=storage.data_dir / "llm_logs" if cfg["llm"].get("audit", True) else None,
+    )
     day = date.fromisoformat(args.date) if args.date else date.today()
 
     started = datetime.now(timezone.utc)
@@ -212,6 +216,46 @@ def cmd_rank(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_audit(args: argparse.Namespace) -> int:
+    cfg = load_config(args.config)
+    storage = Storage(resolve_path(cfg, "data_dir"), resolve_path(cfg, "cache_dir"))
+    log_dir = storage.data_dir / "llm_logs"
+    day = date.fromisoformat(args.date) if args.date else date.today()
+    path = log_dir / f"{day.isoformat()}.jsonl"
+    if not path.exists():
+        print(f"没有日志：{path}")
+        return 1
+
+    entries: list[dict] = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        try:
+            entry = json.loads(line)
+        except ValueError:
+            continue
+        if args.label and not str(entry.get("label", "")).startswith(args.label):
+            continue
+        entries.append(entry)
+    if not entries:
+        print(f"没有匹配记录：{path}")
+        return 1
+
+    shown = entries[-args.limit :]
+    print(f"{path}｜匹配 {len(entries)} 条，显示最近 {len(shown)} 条")
+    for entry in shown:
+        if args.full:
+            print(json.dumps(entry, ensure_ascii=False, indent=2))
+            continue
+        print(
+            f"\n[{entry.get('ts', '')}] {entry.get('label', '')} · {entry.get('status', '')} · "
+            f"{entry.get('duration_ms', 0)}ms · {entry.get('model', '')} · {entry.get('request_id', '')}"
+        )
+        user_text = (entry.get("request") or {}).get("user", "")
+        print("  input :", user_text[:220].replace("\n", " "))
+        output = entry.get("response") or entry.get("error") or ""
+        print("  output:", output[:220].replace("\n", " "))
+    return 0
+
+
 def _fmt(value: float) -> str:
     if value >= 1e12:
         return f"${value / 1e12:.2f}T"
@@ -261,6 +305,14 @@ def main(argv: list[str] | None = None) -> int:
     rank.add_argument("--top", type=int)
     rank.add_argument("--config")
     rank.set_defaults(func=cmd_rank)
+
+    audit = sub.add_parser("audit", help="查看 LLM 原始输入/输出日志")
+    audit.add_argument("--date", help="日志日期（YYYY-MM-DD），默认今天")
+    audit.add_argument("--label", help="按 label 过滤，如 classify / analyze")
+    audit.add_argument("--limit", type=int, default=10, help="显示最近 N 条，默认 10")
+    audit.add_argument("--full", action="store_true", help="输出完整 JSON（含 system prompt）")
+    audit.add_argument("--config")
+    audit.set_defaults(func=cmd_audit)
 
     args = parser.parse_args(argv)
     return args.func(args)

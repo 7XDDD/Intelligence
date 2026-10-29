@@ -59,13 +59,19 @@ _ROUTINE_MARKERS = [
 ]
 _AMOUNT_RE = re.compile(r"\$\s?([0-9]+(?:\.[0-9]+)?)\s?(trillion|billion|million|bn|b|m)\b", re.I)
 
+# 这些关键词是词干（introduces/introducing、advertised/advertising），按前缀匹配；
+# 其余关键词必须整词匹配，避免 "ai" 命中 "airline"、"deal" 命中 "dealer" 这类误判。
+_PREFIX_KEYWORDS = {"introduc", "advertis"}
+
 
 def _match_category(text: str) -> tuple[str, dict[str, int]]:
     scores: dict[str, int] = {}
     for category, words in KEYWORDS.items():
         hits = 0
         for word in words:
-            if re.search(rf"\b{re.escape(word)}", text):
+            escaped = re.escape(word)
+            pattern = rf"\b{escaped}" if word in _PREFIX_KEYWORDS else rf"\b{escaped}\b"
+            if re.search(pattern, text):
                 hits += 1
         if hits:
             scores[category] = hits
@@ -155,6 +161,7 @@ def _llm_batch(
     llm: LLMClient,
     system_prompt: str,
     clusters: list[EventCluster],
+    label: str = "classify",
 ) -> dict[str, dict[str, Any]]:
     payload = []
     for cluster in clusters:
@@ -173,7 +180,7 @@ def _llm_batch(
             }
         )
     user = json.dumps({"news_items": payload}, ensure_ascii=False, indent=1)
-    result = llm.chat_json(system_prompt, user)
+    result = llm.chat_json(system_prompt, user, label=label)
     items = result.get("items") if isinstance(result, dict) else result
     out: dict[str, dict[str, Any]] = {}
     for raw in items or []:
@@ -223,7 +230,9 @@ def classify_clusters(
         for start in range(0, len(clusters), batch_size):
             batch = clusters[start : start + batch_size]
             try:
-                results.update(_llm_batch(llm, system_prompt, batch))
+                results.update(
+                    _llm_batch(llm, system_prompt, batch, label=f"classify:batch{start // batch_size + 1}")
+                )
             except LLMError as exc:
                 notes.append(f"分类 LLM 调用失败，已回退规则模式：{exc}")
                 break
