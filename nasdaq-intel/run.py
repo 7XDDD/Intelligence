@@ -131,6 +131,7 @@ def cmd_run(args: argparse.Namespace) -> int:
         llm=llm,
         prompts_dir=PROMPTS_DIR,
         threshold=int(cfg["analysis"]["importance_threshold"]),
+        batch_size=int(cfg["analysis"].get("classify_batch_size", 20)),
     )
     warnings.extend(cls_notes)
     node("classify", "ok", f"{len(events)} 个事件，模式：{'LLM' if llm.available else '规则'}")

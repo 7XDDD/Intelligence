@@ -353,6 +353,39 @@ class PromptWiringTests(unittest.TestCase):
         self.assertIn(key, entry["request"]["user"])
         self.assertEqual(entry["parsed"], payload)
 
+    def test_opinion_confidence_is_capped(self) -> None:
+        clusters = cluster_items(
+            [
+                make_item(
+                    ticker="META",
+                    title="Meta Just Priced Stock Sale at $625 a Share. I'd Consider Buying.",
+                    summary="Meta priced 40 million Class A shares at $625 each in a $25 billion offering.",
+                    publisher="The Motley Fool",
+                    url="https://fool.example/meta",
+                )
+            ]
+        )
+        payload = {
+            "items": [
+                {
+                    "event_key": clusters[0].event_key,
+                    "ticker": "META",
+                    "title": "Meta priced 40 million shares at $625 each in a $25 billion offering",
+                    "category": "capital",
+                    "importance": 4,
+                    "confidence": 0.9,
+                    "is_duplicate": False,
+                    "fact_summary": "Meta priced a $25 billion share offering.",
+                    "needs_verification": False,
+                }
+            ]
+        }
+        with patch("nasdaq_intel.llm.requests.post", return_value=self._response(payload)):
+            events, _ = classify_clusters(clusters, llm=self.client, prompts_dir=PROMPTS_DIR, threshold=4)
+        self.assertEqual(events[0]["content_type"], "opinion")
+        self.assertLessEqual(events[0]["confidence"], 0.6)
+        self.assertTrue(events[0]["needs_verification"])
+
     def test_analyze_prompt_and_log(self) -> None:
         from nasdaq_intel.pipeline.analyze import analyze_events
 

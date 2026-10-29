@@ -244,6 +244,10 @@ def classify_clusters(
             event["content_type"] = _content_type(
                 cluster.primary, f"{cluster.primary.get('title','')} {cluster.primary.get('summary','')}".lower()
             )
+            if event["content_type"] == "opinion":
+                # 观点类材料即使披露了事实，也不给高置信度，并强制标记待核验
+                event["confidence"] = round(min(float(event.get("confidence", 0.6)), 0.6), 3)
+                event["needs_verification"] = True
         else:
             event = _rule_score(cluster, threshold)
         event["_cluster"] = cluster

@@ -46,6 +46,8 @@ analysis:
   importance_threshold: 4
   max_deep_analysis: 6
   max_events_in_report: 8
+  # 分类每批条数：太多会截断 JSON，太少会增加调用次数
+  classify_batch_size: 12
 
 llm:
   # OpenAI 兼容接口；未配置 API Key 时自动降级为规则模式
@@ -55,7 +57,8 @@ llm:
   model: deepseek-chat
   api_key_env: OPENAI_API_KEY
   temperature: 0.2
-  max_tokens: 1200
+  # DeepSeek 单次输出上限 8K；分类批量输出较长，留足空间避免 JSON 截断
+  max_tokens: 3000
   timeout: 90
   # 报告正文是否交给 LLM 生成。MVP 默认 false：使用确定性模板，保证数字与来源不走样
   generate_report: false
