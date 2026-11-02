@@ -1,0 +1,21 @@
+{
+  "ticker": "AAPL",
+  "company_name": "Apple Inc.",
+  "current_price": 341.31,
+  "previous_close": 344.63,
+  "daily_close": null,
+  "price_date": null,
+  "quote_timestamp": "2026-11-02T10:55:00-05:00",
+  "quote_timestamp_display": "Nov 2, 2026 10:55 AM ET",
+  "market_status": "Open",
+  "market_phase": "open",
+  "market_phase_label": "交易中",
+  "change": -3.32,
+  "change_pct": -0.96,
+  "change_basis": "intraday",
+  "volume": 12145397.36373,
+  "currency": "USD",
+  "source": "api.nasdaq.com/api/quote",
+  "fetched_at": "2026-11-02T10:55:26.621211-05:00",
+  "warnings": []
+}

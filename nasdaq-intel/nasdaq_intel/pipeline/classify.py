@@ -16,6 +16,48 @@ from .normalize import EventCluster, extract_amounts
 
 CATEGORIES = {"technology", "capital", "business", "financial", "other"}
 
+# 任务书 7.2 要求的十个情报维度（与 5 个粗分类并行，作为更细的主题标签）
+TOPICS: dict[str, str] = {
+    "ai_models": "AI 与模型",
+    "chips_infra": "芯片与基础设施",
+    "product": "产品与技术发布",
+    "research": "研发与技术突破",
+    "strategy": "公司战略",
+    "investment": "投资、并购与合作",
+    "earnings": "财报与业绩",
+    "valuation": "股价与估值",
+    "regulatory": "监管与诉讼",
+    "competition": "竞争格局",
+}
+
+_TOPIC_KEYWORDS: dict[str, list[str]] = {
+    "ai_models": ["artificial intelligence", "ai ", " ai", "model", "llm", "inference", "training"],
+    "chips_infra": ["chip", "semiconductor", "gpu", "data center", "infrastructure", "server"],
+    "product": ["launch", "unveil", "introduc", "release", "product", "device"],
+    "research": ["research", "breakthrough", "patent", "prototype", "quantum"],
+    "strategy": ["strategy", "reorganiz", "restructur", "expansion", "spin off", "joint venture"],
+    "investment": ["acquire", "acquisition", "merger", "invest", "funding", "buyback", "dividend", "offering"],
+    "earnings": ["earnings", "revenue", "profit", "guidance", "quarter", "fiscal", "eps"],
+    "valuation": ["valuation", "price target", "rating", "analyst", "stock price", "market cap"],
+    "regulatory": ["fine", "fined", "lawsuit", "probe", "investigation", "antitrust", "regulator"],
+    "competition": ["competition", "competitor", "market share", "rival", "pricing war"],
+}
+
+
+def derive_topics(text: str, category: str) -> list[str]:
+    """规则模式下的主题标签；LLM 返回 topics 时优先使用 LLM。"""
+    low = (text or "").lower()
+    topics = [
+        code
+        for code, words in _TOPIC_KEYWORDS.items()
+        if any(re.search(rf"\b{re.escape(word.strip())}", low) for word in words)
+    ]
+    if category == "financial" and "earnings" not in topics:
+        topics.append("earnings")
+    if category == "capital" and "investment" not in topics:
+        topics.append("investment")
+    return topics[:4]
+
 KEYWORDS: dict[str, list[str]] = {
     "capital": [
         "acquire", "acquisition", "merger", "takeover", "stake", "investment", "invests",
@@ -126,6 +168,7 @@ def _rule_score(cluster: EventCluster, threshold: int) -> dict[str, Any]:
         "ticker": cluster.ticker,
         "title": title,
         "category": category,
+        "topics": derive_topics(text, category),
         "importance": importance,
         "confidence": 0.6 if content_type != "opinion" else 0.45,
         "is_duplicate": len(cluster.items) > 1,
@@ -172,6 +215,14 @@ def _llm_batch(
         if not key:
             continue
         category = raw.get("category") if raw.get("category") in CATEGORIES else "other"
+        raw_topics = raw.get("topics")
+        if not isinstance(raw_topics, list):
+            raw_topics = []
+        topics = [str(topic) for topic in raw_topics if str(topic) in TOPICS][:4]
+        if not topics:
+            title = str(raw.get("title") or "")
+            summary = str(raw.get("fact_summary") or "")
+            topics = derive_topics(f"{title} {summary}", category)
         try:
             importance = int(raw.get("importance", 3))
         except (TypeError, ValueError):
@@ -186,6 +237,7 @@ def _llm_batch(
             "ticker": raw.get("ticker") or "",
             "title": raw.get("title") or "",
             "category": category,
+            "topics": topics,
             "importance": importance,
             "confidence": max(0.0, min(1.0, confidence)),
             "is_duplicate": bool(raw.get("is_duplicate", False)),

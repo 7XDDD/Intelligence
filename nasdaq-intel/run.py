@@ -4,20 +4,24 @@ from __future__ import annotations
 
 import argparse
 import json
+import sqlite3
 import sys
 import time
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 from nasdaq_intel.config import load_config, resolve_path
+from nasdaq_intel.db import IntelligenceDB
 from nasdaq_intel.http import HttpClient
 from nasdaq_intel.llm import LLMClient
-from nasdaq_intel.pipeline.analyze import analyze_events
+from nasdaq_intel.market_calendar import is_trading_day, latest_trading_day, ny_today
+from nasdaq_intel.pipeline.analyze import analyze_events, summarize_trends
 from nasdaq_intel.pipeline.classify import classify_clusters
 from nasdaq_intel.pipeline.normalize import cluster_items
 from nasdaq_intel.pipeline.report import build_report
-from nasdaq_intel.sources import filings, news, ranking
+from nasdaq_intel.sources import filings, market, news, ranking
 from nasdaq_intel.storage import Storage
+from nasdaq_intel import quality
 
 PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
 
@@ -49,17 +53,20 @@ def cmd_run(args: argparse.Namespace) -> int:
         data_dir=resolve_path(cfg, "data_dir"),
         cache_dir=resolve_path(cfg, "cache_dir"),
     )
+    db = IntelligenceDB(storage.data_dir / "intelligence.db")
     http = build_http(cfg)
     llm = LLMClient(
         cfg["llm"],
         log_dir=storage.data_dir / "llm_logs" if cfg["llm"].get("audit", True) else None,
     )
-    day = date.fromisoformat(args.date) if args.date else date.today()
+    day = date.fromisoformat(args.date) if args.date else latest_trading_day(ny_today())
 
     started = datetime.now(timezone.utc)
     nodes: list[dict] = []
     errors: list[str] = []
     warnings: list[str] = []
+    if not is_trading_day(day):
+        warnings.append(f"{day.isoformat()} 不是美股交易日，报告仅作数据快照")
 
     def node(name: str, status: str, detail: str = "") -> None:
         nodes.append({"name": name, "status": status, "detail": detail})
@@ -69,17 +76,29 @@ def cmd_run(args: argparse.Namespace) -> int:
     try:
         snapshot = ranking.build_snapshot(http, day=day, cfg=cfg)
         storage.save_ranking(day, snapshot)
+        db.record_ranking(day, snapshot)
         node("ranking", "ok", f"{snapshot['company_count']} 家公司，候选池 {snapshot['universe_size']}")
         warnings.extend(snapshot.get("warnings") or [])
     except Exception as exc:
         errors.append(f"市值排名失败：{exc}")
         node("ranking", "failed", str(exc))
-        return _finish(storage, started, nodes, errors, warnings, day, report_path=None, exit_code=2)
+        return _finish(storage, db, started, nodes, errors, warnings, day, report_path=None, exit_code=2)
 
     prev_snapshot = storage.previous_ranking(day)
     companies = snapshot["companies"][: args.limit or cfg["ranking"]["top_n"]]
 
-    # 2) 采集窗口
+    # 2) 行情：最新价 / 前收 / 指定交易日收盘分开采集
+    market_snapshots, market_errors = market.collect_market(
+        http,
+        companies=companies,
+        day=day,
+        cache_dir=storage.cache_dir,
+    )
+    errors.extend(market_errors)
+    db.record_market(day, market_snapshots)
+    node("market", "ok" if market_snapshots else "failed", f"{len(market_snapshots)} 家行情")
+
+    # 3) 采集窗口
     last_run = storage.last_success_run_time()
     lookback_hours = int(cfg["collect"]["lookback_hours"])
     lookback_days = lookback_hours // 24 or 1
@@ -117,6 +136,7 @@ def cmd_run(args: argparse.Namespace) -> int:
         raw_filings = []
         errors.append(f"SEC 申报采集失败：{exc}")
         node("filings", "failed", str(exc))
+    db.record_materials(day, raw_news + raw_filings)
 
     # 5) 去重归并
     clusters = cluster_items(
@@ -148,15 +168,39 @@ def cmd_run(args: argparse.Namespace) -> int:
     errors.extend(ana_errors)
     node("analyze", "ok" if used_llm else "skipped", f"{len(analyses)} 个事件完成深度分析")
 
-    # 8) 日报
-    llm_mode = "LLM（语义分类与深度分析）" if (llm.available and used_llm) else (
-        "LLM（语义分类）" if llm.available else "规则回退（关键词启发式）"
+    # 8) 跨公司趋势总结
+    trend_summary, trend_errors, used_trend = summarize_trends(
+        events, llm=llm, prompts_dir=PROMPTS_DIR
     )
+    errors.extend(trend_errors)
+    node("trend", "ok" if used_trend else "skipped", "LLM 趋势总结" if used_trend else "未使用")
+
+    # 9) 数据质量校验与历史入库
+    covered = {company["ticker"] for company in companies}
+    quality_issues: list[dict[str, str]] = []
+    quality_issues += quality.validate_snapshot(snapshot, expected_count=int(cfg["ranking"]["top_n"]))
+    quality_issues += quality.validate_materials(
+        raw_news + raw_filings, covered_tickers=covered, day=day
+    )
+    quality_issues += quality.validate_market(market_snapshots, day=day, today=ny_today())
+    db.record_events(day, events, analyses)
+    db.sync_llm_logs(storage.data_dir / "llm_logs")
+    db_summary = db.summary(day)
+
+    # 10) 日报
+    if llm.available and used_llm:
+        llm_mode = "LLM（语义分类、深度分析与趋势总结）" if used_trend else "LLM（语义分类与深度分析）"
+    elif llm.available:
+        llm_mode = "LLM（语义分类）"
+    else:
+        llm_mode = "规则回退（关键词启发式）"
     dataset = {
         "as_of_date": day.isoformat(),
         "generated_at": snapshot["generated_at"],
         "llm_mode": llm_mode,
         "companies": companies,
+        "market": market_snapshots,
+        "trend_summary": trend_summary,
         "events": [_serializable(e) for e in events],
     }
     storage.save_events(day, dataset)
@@ -177,7 +221,7 @@ def cmd_run(args: argparse.Namespace) -> int:
         analyses=analyses,
         llm_mode=llm_mode,
         run=run_meta,
-        tz_name=cfg["project"]["report_timezone"],
+        tz_name=cfg["project"].get("display_timezone", "Asia/Shanghai"),
         max_events=int(cfg["analysis"]["max_events_in_report"]),
         collection={
             "company_count": len(companies),
@@ -185,14 +229,50 @@ def cmd_run(args: argparse.Namespace) -> int:
             "filing_count": len(raw_filings),
             "errors": errors,
         },
+        market_snapshots=market_snapshots,
+        trend_summary=trend_summary,
+        llm_stats=llm.stats(),
+        quality_issues=quality_issues,
+        db_summary=db_summary,
+    )
+    structure_issues = quality.validate_report(
+        markdown,
+        [
+            "## 一、今日核心情报",
+            "## 二、公司动态",
+            "## 三、行业趋势与竞争格局",
+            "## 四、市场表现",
+            "## 五、后续观察清单",
+            "## 六、数据质量与运行说明",
+        ],
+    )
+    quality_issues.extend(structure_issues)
+    quality_dir = storage.data_dir / "quality"
+    quality_dir.mkdir(parents=True, exist_ok=True)
+    (quality_dir / f"{day.isoformat()}.json").write_text(
+        json.dumps(quality_issues, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     report_path = storage.save_report(day, markdown)
     node("report", "ok", str(report_path))
 
     exit_code = 0 if run_meta["status"] == "ok" else 1
-    _finish(storage, started, nodes, errors, warnings, day, report_path=report_path, exit_code=exit_code)
+    _finish(
+        storage,
+        db,
+        started,
+        nodes,
+        errors,
+        warnings,
+        day,
+        report_path=report_path,
+        exit_code=exit_code,
+        quality_issues=quality_issues,
+    )
     print(f"\n日报已生成：{report_path}")
-    print(f"事件 {len(events)} 个｜原始材料 {len(raw_news) + len(raw_filings)} 条｜状态 {run_meta['status']}")
+    print(
+        f"事件 {len(events)} 个｜原始材料 {len(raw_news) + len(raw_filings)} 条｜"
+        f"行情 {len(market_snapshots)} 家｜状态 {run_meta['status']}"
+    )
     if errors:
         print("异常：")
         for err in errors[:5]:
@@ -206,9 +286,12 @@ def cmd_rank(args: argparse.Namespace) -> int:
         cfg["ranking"]["top_n"] = args.top
     http = build_http(cfg)
     storage = Storage(resolve_path(cfg, "data_dir"), resolve_path(cfg, "cache_dir"))
-    day = date.fromisoformat(args.date) if args.date else date.today()
+    db = IntelligenceDB(storage.data_dir / "intelligence.db")
+    day = date.fromisoformat(args.date) if args.date else latest_trading_day(ny_today())
     snapshot = ranking.build_snapshot(http, day=day, cfg=cfg)
     path = storage.save_ranking(day, snapshot)
+    db.record_ranking(day, snapshot)
+    db.close()
     print(f"排名快照已保存：{path}")
     for company in snapshot["companies"]:
         print(
@@ -258,6 +341,61 @@ def cmd_audit(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_stats(args: argparse.Namespace) -> int:
+    cfg = load_config(args.config)
+    data_dir = resolve_path(cfg, "data_dir")
+    path = data_dir / "intelligence.db"
+    if not path.exists():
+        print(f"历史库不存在：{path}")
+        return 1
+    conn = sqlite3.connect(str(path))
+    dates = [
+        row[0]
+        for row in conn.execute(
+            "SELECT DISTINCT report_date FROM runs ORDER BY report_date DESC LIMIT ?",
+            (args.days,),
+        )
+    ]
+    if not dates:
+        print("暂无运行记录")
+        return 1
+    print(f"{'报告日期':<12} {'运行':>4} {'成功':>4} {'公司':>4} {'事件':>4} {'LLM':>4} {'Tokens':>9} {'成本$':>9}")
+    total_runs = total_ok = total_tokens = 0
+    total_cost = 0.0
+    for report_date in sorted(dates):
+        run_count, ok_count = conn.execute(
+            "SELECT COUNT(*), SUM(CASE WHEN status='ok' THEN 1 ELSE 0 END) FROM runs WHERE report_date=?",
+            (report_date,),
+        ).fetchone()
+        companies = conn.execute(
+            "SELECT COUNT(*) FROM companies WHERE snapshot_date=?", (report_date,)
+        ).fetchone()[0]
+        events = conn.execute(
+            "SELECT COUNT(*) FROM events WHERE report_date=?", (report_date,)
+        ).fetchone()[0]
+        llm_count, tokens, cost = conn.execute(
+            "SELECT COUNT(*), COALESCE(SUM(total_tokens),0), COALESCE(SUM(cost_usd),0) "
+            "FROM llm_calls WHERE substr(ts,1,10)=?",
+            (report_date,),
+        ).fetchone()
+        total_runs += run_count or 0
+        total_ok += ok_count or 0
+        total_tokens += tokens or 0
+        total_cost += cost or 0.0
+        print(
+            f"{report_date:<12} {run_count or 0:>4} {ok_count or 0:>4} {companies:>4} "
+            f"{events:>4} {llm_count:>4} {tokens:>9,} {cost:>9.4f}"
+        )
+    conn.close()
+    rate = f"{total_ok / total_runs:.0%}" if total_runs else "—"
+    print(
+        f"\n合计：运行 {total_runs} 次，成功 {total_ok} 次（成功率 {rate}），"
+        f"Token {total_tokens:,}，成本 ${total_cost:.4f}"
+    )
+    print("说明：LLM 调用按 UTC 日期统计；成本需在 config/settings.yaml 配置单价后才有值。")
+    return 0
+
+
 def _fmt(value: float) -> str:
     if value >= 1e12:
         return f"${value / 1e12:.2f}T"
@@ -277,7 +415,19 @@ def _serializable(event: dict) -> dict:
     return out
 
 
-def _finish(storage, started, nodes, errors, warnings, day, *, report_path, exit_code) -> int:
+def _finish(
+    storage,
+    db,
+    started,
+    nodes,
+    errors,
+    warnings,
+    day,
+    *,
+    report_path,
+    exit_code,
+    quality_issues=None,
+) -> int:
     finished = datetime.now(timezone.utc)
     entry = {
         "started_at": started.isoformat(),
@@ -288,8 +438,14 @@ def _finish(storage, started, nodes, errors, warnings, day, *, report_path, exit
         "errors": errors,
         "warnings": warnings,
         "report": str(report_path) if report_path else None,
+        "quality_issues": quality_issues or [],
     }
     storage.append_run(entry)
+    try:
+        db.record_run(entry, day)
+        db.sync_llm_logs(storage.data_dir / "llm_logs")
+    finally:
+        db.close()
     return exit_code
 
 
@@ -318,6 +474,11 @@ def main(argv: list[str] | None = None) -> int:
     audit.add_argument("--full", action="store_true", help="输出完整 JSON（含 system prompt）")
     audit.add_argument("--config")
     audit.set_defaults(func=cmd_audit)
+
+    stats = sub.add_parser("stats", help="查看最近 N 个报告日的运行、Token 与成本")
+    stats.add_argument("--days", type=int, default=7, help="统计最近 N 个报告日，默认 7")
+    stats.add_argument("--config")
+    stats.set_defaults(func=cmd_stats)
 
     args = parser.parse_args(argv)
     return args.func(args)

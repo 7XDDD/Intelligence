@@ -12,7 +12,13 @@ from urllib3.util.retry import Retry
 
 
 class HttpError(RuntimeError):
-    pass
+    """HTTP 错误：区分可重试的临时错误与不可重试的永久错误。"""
+
+    def __init__(self, message: str, *, url: str = "", status: int | None = None, permanent: bool = False) -> None:
+        super().__init__(message)
+        self.url = url
+        self.status = status
+        self.permanent = permanent
 
 
 class HttpClient:
@@ -41,9 +47,11 @@ class HttpClient:
             total=max_retries,
             connect=max_retries,
             read=max_retries,
-            backoff_factor=1.0,
+            backoff_factor=2.0,  # 退避约 2s / 4s / 8s
+            backoff_max=30,
             status_forcelist=(429, 500, 502, 503, 504),
             allowed_methods=frozenset({"GET", "POST"}),
+            respect_retry_after_header=True,
             raise_on_status=False,
         )
         adapter = HTTPAdapter(max_retries=retry, pool_connections=8, pool_maxsize=8)
@@ -73,7 +81,13 @@ class HttpClient:
             merged_headers.setdefault("User-Agent", self.sec_user_agent)
         resp = self.session.get(url, params=params, headers=merged_headers, timeout=self.timeout)
         if resp.status_code >= 400:
-            raise HttpError(f"GET {url} -> HTTP {resp.status_code}: {resp.text[:200]}")
+            permanent = resp.status_code in (400, 401, 403, 404, 405, 422)
+            raise HttpError(
+                f"GET {url} -> HTTP {resp.status_code}: {resp.text[:200]}",
+                url=url,
+                status=resp.status_code,
+                permanent=permanent,
+            )
         return resp
 
     def get_json(self, url: str, *, params: dict[str, Any] | None = None,

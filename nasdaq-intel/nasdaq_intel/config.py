@@ -14,7 +14,9 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DEFAULTS: dict[str, Any] = {
     "project": {
         "name": "nasdaq-intel",
-        "report_timezone": "America/New_York",
+        "report_timezone": "Asia/Shanghai",
+        "trading_timezone": "America/New_York",
+        "display_timezone": "Asia/Shanghai",
         "data_dir": "data",
         "cache_dir": "data/cache",
     },
@@ -50,6 +52,13 @@ DEFAULTS: dict[str, Any] = {
         "max_tokens": 1200,
         "timeout": 90,
         "generate_report": False,
+        "audit": True,
+        "input_cost_per_million": 0.0,
+        "output_cost_per_million": 0.0,
+    },
+    "market": {
+        "history_days": 45,
+        "cache_ttl_seconds": 900,
     },
     "http": {
         "user_agent": (

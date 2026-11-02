@@ -3,8 +3,10 @@
 
 project:
   name: nasdaq-intel
-  # 报告展示用时区（数据统一以 UTC 保存）
-  report_timezone: America/New_York
+  # 采集时间统一以 UTC 保存；交易日期用美东；日报展示用北京时间
+  report_timezone: Asia/Shanghai
+  trading_timezone: America/New_York
+  display_timezone: Asia/Shanghai
   data_dir: data
   cache_dir: data/cache
 
@@ -64,6 +66,15 @@ llm:
   generate_report: false
   # 每次真实 LLM 调用都把原始输入/输出写入 data/llm_logs/YYYY-MM-DD.jsonl，便于复核
   audit: true
+  # 按供应商实际价格填写（每百万 Token，美元）；填 0 表示只统计 Token 不估算成本
+  input_cost_per_million: 0.0
+  output_cost_per_million: 0.0
+
+market:
+  # 历史日线回看天数（用于取前一交易日收盘价）
+  history_days: 45
+  # 盘中行情缓存有效期（秒）；收盘后的快照可直接复用
+  cache_ttl_seconds: 900
 
 http:
   # 行情/新闻站点需要浏览器 UA，否则会被拒绝或长时间无响应

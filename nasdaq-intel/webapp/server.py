@@ -11,10 +11,12 @@
 from __future__ import annotations
 
 import html
+import hmac
 import json
 import os
 import re
 import socket
+from base64 import b64decode
 from datetime import date, datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -25,6 +27,8 @@ import markdown
 ROOT = Path(os.environ.get("NASDAQ_INTEL_ROOT", Path(__file__).resolve().parent.parent))
 DATA_DIR = Path(os.environ.get("NASDAQ_INTEL_DATA_DIR", str(ROOT / "data")))
 REPORT_DIR = DATA_DIR / "reports"
+WEB_USER = os.environ.get("NASDAQ_INTEL_WEB_USER", "").strip()
+WEB_PASSWORD = os.environ.get("NASDAQ_INTEL_WEB_PASSWORD", "").strip()
 
 
 def default_host() -> str:
@@ -204,6 +208,12 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/health":
             self._send("ok".encode(), "text/plain; charset=utf-8")
             return
+        if not self._authorized():
+            self.send_response(401)
+            self.send_header("WWW-Authenticate", 'Basic realm="nasdaq-intel"')
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         if path == "/api/reports":
             payload = {
                 "reports": [
@@ -253,6 +263,20 @@ class Handler(BaseHTTPRequestHandler):
 
         self._send_html(error_page(404, f"页面不存在：{path}"), 404)
 
+    def _authorized(self) -> bool:
+        """未配置用户名/密码时保持公开只读；配置后启用 HTTP Basic Auth。"""
+        if not WEB_USER or not WEB_PASSWORD:
+            return True
+        header = self.headers.get("Authorization", "")
+        if not header.startswith("Basic "):
+            return False
+        try:
+            decoded = b64decode(header[6:]).decode("utf-8")
+            user, _, password = decoded.partition(":")
+        except (ValueError, UnicodeDecodeError):
+            return False
+        return hmac.compare_digest(user, WEB_USER) and hmac.compare_digest(password, WEB_PASSWORD)
+
     def _send_html(self, body: str, status: int = 200) -> None:
         self._send(body.encode("utf-8"), "text/html; charset=utf-8", status)
 
@@ -262,6 +286,8 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("X-Frame-Options", "DENY")
+        self.send_header("Referrer-Policy", "no-referrer")
         for key, value in (extra_headers or {}).items():
             self.send_header(key, value)
         self.end_headers()

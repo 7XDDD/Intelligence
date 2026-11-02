@@ -1,0 +1,21 @@
+{
+  "ticker": "GOOGL",
+  "company_name": "Alphabet Inc.",
+  "current_price": 284.68,
+  "previous_close": 279.84,
+  "daily_close": null,
+  "price_date": null,
+  "quote_timestamp": "2026-11-02T10:55:00-05:00",
+  "quote_timestamp_display": "Nov 2, 2026 10:55 AM ET",
+  "market_status": "Open",
+  "market_phase": "open",
+  "market_phase_label": "交易中",
+  "change": 4.84,
+  "change_pct": 1.73,
+  "change_basis": "intraday",
+  "volume": 14061319.126874,
+  "currency": "USD",
+  "source": "api.nasdaq.com/api/quote",
+  "fetched_at": "2026-11-02T10:55:22.853405-05:00",
+  "warnings": []
+}

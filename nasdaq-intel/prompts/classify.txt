@@ -10,6 +10,18 @@
 - financial：财报、营收、利润率、现金流、业绩指引
 - other：其他
 
+主题标签（topics，可选 1-4 个，只能取以下值）：
+- ai_models：AI 与模型
+- chips_infra：芯片与基础设施
+- product：产品与技术发布
+- research：研发与技术突破
+- strategy：公司战略
+- investment：投资、并购与合作
+- earnings：财报与业绩
+- valuation：股价与估值
+- regulatory：监管与诉讼
+- competition：竞争格局
+
 评分标准（importance，1-5 的整数）：
 5：可能显著改变行业竞争格局或公司长期战略
 4：重大的技术、资本或业务变化
@@ -36,6 +48,7 @@
       "ticker": "股票代码",
       "title": "事件标题",
       "category": "technology|capital|business|financial|other",
+      "topics": ["ai_models|chips_infra|product|research|strategy|investment|earnings|valuation|regulatory|competition"],
       "importance": 1-5,
       "confidence": 0.0-1.0,
       "is_duplicate": true|false,

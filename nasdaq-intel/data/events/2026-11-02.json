@@ -1,0 +1,1624 @@
+{
+  "as_of_date": "2026-11-02",
+  "generated_at": "2026-11-02T15:55:18.175564+00:00",
+  "llm_mode": "规则回退（关键词启发式）",
+  "companies": [
+    {
+      "rank": 1,
+      "ticker": "GOOGL",
+      "tickers": [
+        "GOOGL",
+        "GOOG"
+      ],
+      "company_name": "Alphabet Inc.",
+      "market_cap": 6860789640000.0,
+      "market_cap_display": "$6.86T",
+      "market_cap_timestamp": "2026-11-02T15:55:18.175564+00:00",
+      "sector": "Technology",
+      "industry": "Computer Software: Programming Data Processing",
+      "country": "United States"
+    },
+    {
+      "rank": 2,
+      "ticker": "AAPL",
+      "tickers": [
+        "AAPL"
+      ],
+      "company_name": "Apple Inc.",
+      "market_cap": 5029592253400.0,
+      "market_cap_display": "$5.03T",
+      "market_cap_timestamp": "2026-11-02T15:55:18.175564+00:00",
+      "sector": "Technology",
+      "industry": "Computer Manufacturing",
+      "country": "United States"
+    },
+    {
+      "rank": 3,
+      "ticker": "NVDA",
+      "tickers": [
+        "NVDA"
+      ],
+      "company_name": "NVIDIA Corporation",
+      "market_cap": 4931824000000.0,
+      "market_cap_display": "$4.93T",
+      "market_cap_timestamp": "2026-11-02T15:55:18.175564+00:00",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "country": "United States"
+    }
+  ],
+  "market": [
+    {
+      "ticker": "GOOGL",
+      "company_name": "Alphabet Inc.",
+      "current_price": 284.68,
+      "previous_close": 279.84,
+      "daily_close": null,
+      "price_date": null,
+      "quote_timestamp": "2026-11-02T10:55:00-05:00",
+      "quote_timestamp_display": "Nov 2, 2026 10:55 AM ET",
+      "market_status": "Open",
+      "market_phase": "open",
+      "market_phase_label": "交易中",
+      "change": 4.84,
+      "change_pct": 1.73,
+      "change_basis": "intraday",
+      "volume": 14061319.126874,
+      "currency": "USD",
+      "source": "api.nasdaq.com/api/quote",
+      "fetched_at": "2026-11-02T10:55:22.853405-05:00",
+      "warnings": []
+    },
+    {
+      "ticker": "AAPL",
+      "company_name": "Apple Inc.",
+      "current_price": 341.31,
+      "previous_close": 344.63,
+      "daily_close": null,
+      "price_date": null,
+      "quote_timestamp": "2026-11-02T10:55:00-05:00",
+      "quote_timestamp_display": "Nov 2, 2026 10:55 AM ET",
+      "market_status": "Open",
+      "market_phase": "open",
+      "market_phase_label": "交易中",
+      "change": -3.32,
+      "change_pct": -0.96,
+      "change_basis": "intraday",
+      "volume": 12145397.36373,
+      "currency": "USD",
+      "source": "api.nasdaq.com/api/quote",
+      "fetched_at": "2026-11-02T10:55:26.621211-05:00",
+      "warnings": []
+    },
+    {
+      "ticker": "NVDA",
+      "company_name": "NVIDIA Corporation",
+      "current_price": 207.1637,
+      "previous_close": 204.64,
+      "daily_close": null,
+      "price_date": null,
+      "quote_timestamp": "2026-11-02T10:55:00-05:00",
+      "quote_timestamp_display": "Nov 2, 2026 10:55 AM ET",
+      "market_status": "Open",
+      "market_phase": "open",
+      "market_phase_label": "交易中",
+      "change": 2.52,
+      "change_pct": 1.23,
+      "change_basis": "intraday",
+      "volume": 30724452.049482,
+      "currency": "USD",
+      "source": "api.nasdaq.com/api/quote",
+      "fetched_at": "2026-11-02T10:55:32.588683-05:00",
+      "warnings": []
+    }
+  ],
+  "trend_summary": null,
+  "events": [
+    {
+      "event_key": "aapl-2026-10-29-fe533774364d",
+      "ticker": "AAPL",
+      "title": "Touch Arrives On MacBook Pro",
+      "category": "technology",
+      "importance": 4,
+      "confidence": 0.6,
+      "is_duplicate": false,
+      "fact_summary": "Apple Inc. (AAPL) introduced MacBook Pro with PROLED XDR true to life colour, display and touch for the first time, featuring tandem OLED technology that delivers front-of-screen performance.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/touch-arrives-macbook-pro"
+      ],
+      "needs_verification": true,
+      "content_type": "news",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / RTTNews",
+          "publisher": "RTTNews",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/touch-arrives-macbook-pro",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-10-29-cb7671d6325e",
+      "ticker": "GOOGL",
+      "title": "Alphabet Inc. · 10-Q 季度报告",
+      "category": "financial",
+      "importance": 3,
+      "confidence": 0.6,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet Inc. 于 2026-10-29 向 SEC 提交 10-Q 文件。",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000084/goog-20260930.htm"
+      ],
+      "needs_verification": false,
+      "content_type": "official",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "SEC EDGAR",
+          "publisher": "SEC",
+          "kind": "filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000084/goog-20260930.htm",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-11-02-fe7dc4442e44",
+      "ticker": "AAPL",
+      "title": "Apple Q4 26 Earnings Conference Call At 5:00 PM ET",
+      "category": "financial",
+      "importance": 3,
+      "confidence": 0.6,
+      "is_duplicate": false,
+      "fact_summary": "Apple Inc. (AAPL) will host a conference call at 5:00 PM ET on November 2, 2026, to discuss Q4 26 earnings results.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/apple-q4-26-earnings-conference-call-5-00-pm-et"
+      ],
+      "needs_verification": true,
+      "content_type": "news",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / RTTNews",
+          "publisher": "RTTNews",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/apple-q4-26-earnings-conference-call-5-00-pm-et",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-11-02-fc8e82239b0e",
+      "ticker": "GOOGL",
+      "title": "3 Reasons to Buy Alphabet Stock Right Now",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet’s cloud computing segment is booming.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/3-reasons-buy-alphabet-stock-right-now"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/3-reasons-buy-alphabet-stock-right-now",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-11-02-24cc2c9187e4",
+      "ticker": "GOOGL",
+      "title": "Buy, Sell, or Hold Alphabet Stock After Its $505 Billion Meltdown?",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet’s balance sheet is taking on debt to fund its artificial intelligence (AI) spending.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/buy-sell-or-hold-alphabet-stock-after-its-505-billion-meltdown"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/buy-sell-or-hold-alphabet-stock-after-its-505-billion-meltdown",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-11-02-afd0984f034b",
+      "ticker": "GOOGL",
+      "title": "Alphabet Inc. (GOOGL) Is a Trending Stock: Facts to Know Before Betting on It",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet (GOOGL) has received quite a bit of attention from Zacks.com users lately. Therefore, it is wise to be aware of the facts that can impact the stock's prospects.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/alphabet-inc-googl-trending-stock-facts-know-betting-it-0"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/alphabet-inc-googl-trending-stock-facts-know-betting-it-0",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-11-02-0ea1664c7950",
+      "ticker": "GOOGL",
+      "title": "Meet the Spectacular Vanguard ETF With 44.6% of Its Portfolio Parked in Nvidia, Alphabet, Apple, and Microsoft",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "The Vanguard Morningstar Mega Cap Growth ETF holds 52 of America's most valuable growth companies.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/meet-spectacular-vanguard-etf-446-its-portfolio-parked-nvidia-alphabet-apple-and-microsoft"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/meet-spectacular-vanguard-etf-446-its-portfolio-parked-nvidia-alphabet-apple-and-microsoft",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-11-02-1b2b49051486",
+      "ticker": "GOOGL",
+      "title": "Alphabet Missed Its Q3 Estimates, and I Couldn't Care Less",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": true,
+      "fact_summary": "Google parent Alphabet’s profitability and cash flow are under pressure.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/alphabet-plummets-after-earnings-i-think-stock-looks-genius-buy-now",
+        "https://www.nasdaq.com/articles/alphabet-missed-its-q3-estimates-and-i-couldnt-care-less"
+      ],
+      "needs_verification": false,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/alphabet-plummets-after-earnings-i-think-stock-looks-genius-buy-now",
+          "published_date": "2026-11-02"
+        },
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/alphabet-missed-its-q3-estimates-and-i-couldnt-care-less",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-11-02-78aa7fe05d56",
+      "ticker": "GOOGL",
+      "title": "Zacks.com featured highlights include Alphabet, GormanRupp, Micron, Corning, Suncor Energy and Plains All American Pipeline",
+      "category": "capital",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "GOOGL's historic $500 billion market cap loss highlights market volatility, as GRC, MU, GLW, SU and PAA emerge as dividend growth stocks with earnings growth potential. -",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/zackscom-featured-highlights-include-alphabet-gormanrupp-micron-corning-suncor-energy-and"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/zackscom-featured-highlights-include-alphabet-gormanrupp-micron-corning-suncor-energy-and",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-11-02-d9b3dd7d0ecb",
+      "ticker": "GOOGL",
+      "title": "Zacks Investment Ideas feature highlights: Amazon, Alphabet, Meta Platforms and Nvidia",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": true,
+      "fact_summary": "Amazon's post-earnings selloff raises a buy-the-dip question as accelerating AWS growth, record operating margins and massive AI spending reshape its outlook.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/zacks-investment-ideas-feature-highlights-amazon-alphabet-meta-platforms-and-nvidia"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/zacks-investment-ideas-feature-highlights-amazon-alphabet-meta-platforms-and-nvidia",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [
+        "NVDA"
+      ],
+      "related_companies": [
+        {
+          "ticker": "NVDA",
+          "company_name": "NVIDIA Corporation"
+        }
+      ]
+    },
+    {
+      "event_key": "googl-2026-11-02-18c0199fc2bc",
+      "ticker": "GOOGL",
+      "title": "Is Alphabet's Massive AI Spending a Problem? The CFO Just Revealed Everything Investors Need to Know in a Single Sentence.",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet shares dropped as AI spending soared last quarter and management expects to spend more next year.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/alphabets-massive-ai-spending-problem-cfo-just-revealed-everything-investors-need-know"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/alphabets-massive-ai-spending-problem-cfo-just-revealed-everything-investors-need-know",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-11-01-9274fdaa59a4",
+      "ticker": "GOOGL",
+      "title": "1 Reason Alphabet Stock Is Worth Buying on This Pullback",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet shares fell over 10% after third-quarter results, as search revenue slowed and heavy capital spending tanked free cash flow.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/1-reason-alphabet-stock-worth-buying-pullback"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/1-reason-alphabet-stock-worth-buying-pullback",
+          "published_date": "2026-11-01"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-11-01-ad47e867ebe8",
+      "ticker": "GOOGL",
+      "title": "Why Is Alphabet Stock Falling After Earnings, and is it a Buying Opportunity?",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Should you buy stock in Alphabet right now? Before you buy stock in Alphabet, consider this:Missed Nvidia in 2009? This Rare Signal Is Flashing Again. In 2009, a \"Double Down\" signal flashed for a little-known chipmaker called Nvidia. For the first time in years, that same \"Total",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/why-alphabet-stock-falling-after-earnings-and-it-buying-opportunity"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/why-alphabet-stock-falling-after-earnings-and-it-buying-opportunity",
+          "published_date": "2026-11-01"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-11-01-ba3504d3affd",
+      "ticker": "GOOGL",
+      "title": "Alphabet Gets Kicked Out of the $4 Trillion Club After Its Record $505 Billion Drop. Here's What History Says Could Come Next",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet just underwent a historic drawdown.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/alphabet-gets-kicked-out-4-trillion-club-after-its-record-505-billion-drop-heres-what"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/alphabet-gets-kicked-out-4-trillion-club-after-its-record-505-billion-drop-heres-what",
+          "published_date": "2026-11-01"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-11-01-48dda175f341",
+      "ticker": "GOOGL",
+      "title": "Alphabet Says Its AI Spending Will Keep Rising. 2 Data Center Stocks to Buy and Hold Through 2030.",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet expects its capital spending to grow significantly in 2027.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/alphabet-says-its-ai-spending-will-keep-rising-2-data-center-stocks-buy-and-hold-through"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/alphabet-says-its-ai-spending-will-keep-rising-2-data-center-stocks-buy-and-hold-through",
+          "published_date": "2026-11-01"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-10-31-60ea7aec1f27",
+      "ticker": "GOOGL",
+      "title": "2 Stocks Billionaires Can't Stop Buying",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Warren Buffett, Stanley Druckenmiller, and Ken Fisher bought Alphabet stock in Q2.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/2-stocks-billionaires-cant-stop-buying"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/2-stocks-billionaires-cant-stop-buying",
+          "published_date": "2026-10-31"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-10-30-da8bc6c6dfef",
+      "ticker": "GOOGL",
+      "title": "Elon Musk Says Neoclouds Face a \"Guppy Level\" Death. SpaceX Just Borrowed $40 Billion to Make Sure It Isn't One.",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Hyperscalers like Alphabet and SpaceX have stronger financial positions and access to capital.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/elon-musk-says-neoclouds-face-guppy-level-death-spacex-just-borrowed-40-billion-make-sure"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/elon-musk-says-neoclouds-face-guppy-level-death-spacex-just-borrowed-40-billion-make-sure",
+          "published_date": "2026-10-30"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-10-30-5d4542ec6ded",
+      "ticker": "GOOGL",
+      "title": "Google Cloud Grew 103% and the Stock Still Sold Off. Is It a Buy?",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "In this video, I will cover Google's post-earnings drop, what Alphabet's (NASDAQ:GOOGL) capex guidance means for the stock, and my plan for my Google shares, plus the latest news from Microsoft and Oracle. Watch the short video to learn more, consider subscribing, and click the s",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/google-cloud-grew-103-and-stock-still-sold-it-buy"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/google-cloud-grew-103-and-stock-still-sold-it-buy",
+          "published_date": "2026-10-30"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-10-30-e1764df5d202",
+      "ticker": "GOOGL",
+      "title": "Big Tech Stocks Have Never Looked Cheaper. Is the Magnificent Seven a Screaming Buy?",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet, Amazon, Microsoft, and Meta have all fallen after their earnings reports this quarter.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/big-tech-stocks-have-never-looked-cheaper-magnificent-seven-screaming-buy"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/big-tech-stocks-have-never-looked-cheaper-magnificent-seven-screaming-buy",
+          "published_date": "2026-10-30"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-10-30-8b7c6cd81bb7",
+      "ticker": "GOOGL",
+      "title": "GOOGL Drops 13% Post Q3 Earnings: Buy, Sell or Hold the Stock?",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet shares plunge 13% after Q3 earnings as slowing Search ad growth, soaring AI spending and negative free cash flow overshadow robust Cloud growth.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/googl-drops-13-post-q3-earnings-buy-sell-or-hold-stock"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/googl-drops-13-post-q3-earnings-buy-sell-or-hold-stock",
+          "published_date": "2026-10-30"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-10-30-3785b13d9e63",
+      "ticker": "GOOGL",
+      "title": "5 AI Stocks Set to Win Big From Anthropic's Spending Spree",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet and Broadcom are both about to benefit from Anthropic's adoption of TPUs.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/5-ai-stocks-set-win-big-anthropics-spending-spree"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/5-ai-stocks-set-win-big-anthropics-spending-spree",
+          "published_date": "2026-10-30"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-11-02-d8e7ab70b0d6",
+      "ticker": "AAPL",
+      "title": "Meet the Spectacular Vanguard ETF With 44.6% of Its Portfolio Parked in Nvidia, Alphabet, Apple, and Microsoft",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "The Vanguard Morningstar Mega Cap Growth ETF holds 52 of America's most valuable growth companies.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/meet-spectacular-vanguard-etf-446-its-portfolio-parked-nvidia-alphabet-apple-and-microsoft"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/meet-spectacular-vanguard-etf-446-its-portfolio-parked-nvidia-alphabet-apple-and-microsoft",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-11-02-9cd2aae9a661",
+      "ticker": "AAPL",
+      "title": "3 Stocks That Will Move the Market This Week",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "AMD, Apple, and MercadoLibre report their latest quarterly results this week.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/3-stocks-will-move-market-week"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/3-stocks-will-move-market-week",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-11-01-59c470bcdf51",
+      "ticker": "AAPL",
+      "title": "Here's What $5,000 in Vanguard's Tech ETF Could Be Worth by 2030",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Nvidia, Apple, and Microsoft were around 45% of the fund as of Sept. 30.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/heres-what-5000-vanguards-tech-etf-could-be-worth-2030"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/heres-what-5000-vanguards-tech-etf-could-be-worth-2030",
+          "published_date": "2026-11-01"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-11-01-343149f4395c",
+      "ticker": "AAPL",
+      "title": "Could Apple's Latest iPhone Be Its Biggest Growth Catalyst in Years?",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Early demand for the iPhone Duo has been strong.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/could-apples-latest-iphone-be-its-biggest-growth-catalyst-years"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/could-apples-latest-iphone-be-its-biggest-growth-catalyst-years",
+          "published_date": "2026-11-01"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-11-01-b87b01934b7b",
+      "ticker": "AAPL",
+      "title": "Warren Buffett's Apple Bet Is Still Berkshire Hathaway's Biggest Stock Holding at 22% of the Portfolio",
+      "category": "capital",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Berkshire still holds 227.9 million Apple shares, its largest position, after cutting the stake by about 75%.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/warren-buffetts-apple-bet-still-berkshire-hathaways-biggest-stock-holding-22-portfolio"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/warren-buffetts-apple-bet-still-berkshire-hathaways-biggest-stock-holding-22-portfolio",
+          "published_date": "2026-11-01"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-10-31-87e04c5ef685",
+      "ticker": "AAPL",
+      "title": "Is Apple a Top Tech Stock to Buy Now?",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Apple's stock is outpacing its business growth.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/apple-top-tech-stock-buy-now"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/apple-top-tech-stock-buy-now",
+          "published_date": "2026-10-31"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-10-30-63b9a961a576",
+      "ticker": "AAPL",
+      "title": "Apple Is Near a Record. Netflix Is Down More Than Half. I'd Buy Only 1 of Them.",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Netflix's revenue growth has slowed in all of the past three quarters.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/apple-near-record-netflix-down-more-half-id-buy-only-1-them"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/apple-near-record-netflix-down-more-half-id-buy-only-1-them",
+          "published_date": "2026-10-30"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-10-30-db2f5586e5b5",
+      "ticker": "AAPL",
+      "title": "Warren Buffett's Successor, Greg Abel, Has 54% of Berkshire Hathaway's $365 Billion Portfolio Invested in 4 Proven Winners",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Greg Abel wasted little time overhauling Berkshire Hathaway’s portfolio following the Oracle of Omaha’s retirement as CEO at the end of last year.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/warren-buffetts-successor-greg-abel-has-54-berkshire-hathaways-365-billion-portfolio"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/warren-buffetts-successor-greg-abel-has-54-berkshire-hathaways-365-billion-portfolio",
+          "published_date": "2026-10-30"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-10-30-061761315816",
+      "ticker": "AAPL",
+      "title": "Could Apple's First Touchscreen MacBook Pro, First Foldable iPhone Duo Phone, and HomeView Pole Vault Apple Beyond Nvidia to Become the First Company in the $10 Trillion Club?",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Apple recently announced its first foldable iPhone, a smart home display, and its first touchscreen MacBook Pro.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/could-apples-first-touchscreen-macbook-pro-first-foldable-iphone-duo-phone-and-homeview"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/could-apples-first-touchscreen-macbook-pro-first-foldable-iphone-duo-phone-and-homeview",
+          "published_date": "2026-10-30"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-10-30-decbcfaa5b77",
+      "ticker": "AAPL",
+      "title": "Nov. 2 Could Be a Big Day for Apple Stock",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Apple's iPhone Duo sold out on its launch day, and orders are now backed up into January.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/nov-2-could-be-big-day-apple-stock"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/nov-2-could-be-big-day-apple-stock",
+          "published_date": "2026-10-30"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-10-29-c92a9c783df8",
+      "ticker": "AAPL",
+      "title": "Apple's Q4 Earnings Loom: Buy or Sell AAPL Stock Ahead of Results?",
+      "category": "financial",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "AAPL's fiscal Q4 earnings outlook points to strong iPhone demand, Services growth and AI momentum, but supply constraints and a stretched valuation raise concerns.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/apples-q4-earnings-loom-buy-or-sell-aapl-stock-ahead-results"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/apples-q4-earnings-loom-buy-or-sell-aapl-stock-ahead-results",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-10-29-baa17ad38563",
+      "ticker": "AAPL",
+      "title": "Nvidia Is Getting Dangerously Close to Getting Surpassed by Apple in Market Cap. Here's the Better Growth Stock to Buy Now.",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Apple is this year's top-performing \"Magnificent Seven\" stock.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/nvidia-getting-dangerously-close-getting-surpassed-apple-market-cap-heres-better-growth"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/nvidia-getting-dangerously-close-getting-surpassed-apple-market-cap-heres-better-growth",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-10-29-62ac271cb670",
+      "ticker": "AAPL",
+      "title": "Apple Unveils Its First-Ever Touchscreen MacBook Pro. Should Investors Be Concerned About the $2,899 Price Tag?",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Touch adds $400 (16% on the 14-inch) to the same-chip MacBook Pro, and every cheaper Mac stays on sale.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/apple-unveils-its-first-ever-touchscreen-macbook-pro-should-investors-be-concerned-about"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/apple-unveils-its-first-ever-touchscreen-macbook-pro-should-investors-be-concerned-about",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "aapl-2026-10-29-59fefcc9ed86",
+      "ticker": "AAPL",
+      "title": "HPQ vs. AAPL: Which Computer Stock Offers Better Investment Potential?",
+      "category": "capital",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "HP combines growing AI PC adoption, premium commercial device demand and a lower sales multiple to offer a valuation-driven alternative to Apple's expanding ecosystem.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/hpq-vs-aapl-which-computer-stock-offers-better-investment-potential"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Apple Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/hpq-vs-aapl-which-computer-stock-offers-better-investment-potential",
+          "published_date": "2026-10-29"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-11-02-4c46c6412c11",
+      "ticker": "NVDA",
+      "title": "My Top 3 AI Stock Picks for November",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Nvidia and Broadcom are competing for market share in the data center world.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/my-top-3-ai-stock-picks-november"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/my-top-3-ai-stock-picks-november",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-11-02-e736a2f400c9",
+      "ticker": "NVDA",
+      "title": "Meet the Spectacular Vanguard ETF With 44.6% of Its Portfolio Parked in Nvidia, Alphabet, Apple, and Microsoft",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "The Vanguard Morningstar Mega Cap Growth ETF holds 52 of America's most valuable growth companies.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/meet-spectacular-vanguard-etf-446-its-portfolio-parked-nvidia-alphabet-apple-and-microsoft"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/meet-spectacular-vanguard-etf-446-its-portfolio-parked-nvidia-alphabet-apple-and-microsoft",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-11-02-259bcb8ee4fe",
+      "ticker": "NVDA",
+      "title": "Prediction: Nvidia Will Have an Incredible November Thanks to 1 Event",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Nvidia's stock performance in 2026 has been forgettable.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/prediction-nvidia-will-have-incredible-november-thanks-1-event"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/prediction-nvidia-will-have-incredible-november-thanks-1-event",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-11-01-e317c48497ae",
+      "ticker": "NVDA",
+      "title": "Here's What $5,000 in Vanguard's Tech ETF Could Be Worth by 2030",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Nvidia, Apple, and Microsoft were around 45% of the fund as of Sept. 30.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/heres-what-5000-vanguards-tech-etf-could-be-worth-2030"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/heres-what-5000-vanguards-tech-etf-could-be-worth-2030",
+          "published_date": "2026-11-01"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-11-01-fa9c3cc8e5d0",
+      "ticker": "NVDA",
+      "title": "If I Could Only Buy and Hold 1 \"Magnificent Seven\" Stock Through 2030, It Would Be This One",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Nvidia is seeing incredible demand from the AI build-out.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/if-i-could-only-buy-and-hold-1-magnificent-seven-stock-through-2030-it-would-be-one"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/if-i-could-only-buy-and-hold-1-magnificent-seven-stock-through-2030-it-would-be-one",
+          "published_date": "2026-11-01"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-11-01-7c08a0c20339",
+      "ticker": "NVDA",
+      "title": "History Says Now Is the Perfect Time to Buy Nvidia Stock",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Nvidia trades only at a slight premium to the broader market.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/history-says-now-perfect-time-buy-nvidia-stock"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/history-says-now-perfect-time-buy-nvidia-stock",
+          "published_date": "2026-11-01"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-11-01-b304a64f5fc1",
+      "ticker": "NVDA",
+      "title": "5 Huge Winners From Anthropic's IPO",
+      "category": "capital",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "The computing unit providers will make a ton from increased infrastructure costs.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/5-huge-winners-anthropics-ipo"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/5-huge-winners-anthropics-ipo",
+          "published_date": "2026-11-01"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-11-01-59bd34bf9cd5",
+      "ticker": "NVDA",
+      "title": "Alphabet Says Its AI Spending Will Keep Rising. 2 Data Center Stocks to Buy and Hold Through 2030.",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Alphabet expects its capital spending to grow significantly in 2027.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/alphabet-says-its-ai-spending-will-keep-rising-2-data-center-stocks-buy-and-hold-through"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/alphabet-says-its-ai-spending-will-keep-rising-2-data-center-stocks-buy-and-hold-through",
+          "published_date": "2026-11-01"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-10-31-72ab2cb20188",
+      "ticker": "NVDA",
+      "title": "Jensen Huang Just Announced Fantastic News for Nvidia Stock Investors",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "According to Jensen Huang, demand for neocloud services is soaring.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/jensen-huang-just-announced-fantastic-news-nvidia-stock-investors"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/jensen-huang-just-announced-fantastic-news-nvidia-stock-investors",
+          "published_date": "2026-10-31"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-10-31-677fc16139df",
+      "ticker": "NVDA",
+      "title": "Meet the Brilliant AI Stock Obliterating Nvidia in 2026 With a Return of 44%",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Nvidia stock is up 16% so far in 2026, but investors who bought Corning stock at the start of the year would be sitting on a return of 44% instead.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/meet-brilliant-ai-stock-obliterating-nvidia-2026-return-44"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/meet-brilliant-ai-stock-obliterating-nvidia-2026-return-44",
+          "published_date": "2026-10-31"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-10-31-511e6e38eb55",
+      "ticker": "NVDA",
+      "title": "Here's What $10,000 Invested Equally in SpaceX and Nvidia Could Be Worth in 2030",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "SpaceX has a huge opportunity as it expands its compute power and gets strong payback periods.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/heres-what-10000-invested-equally-spacex-and-nvidia-could-be-worth-2030"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/heres-what-10000-invested-equally-spacex-and-nvidia-could-be-worth-2030",
+          "published_date": "2026-10-31"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-10-30-feaffed8f676",
+      "ticker": "NVDA",
+      "title": "Why Nvidia Stock Took a Dive Today",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Nvidia is reportedly in talks to provide credit guarantees for another AI data center.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/why-nvidia-stock-took-dive-today"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/why-nvidia-stock-took-dive-today",
+          "published_date": "2026-10-30"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-10-30-e7dcf70172ce",
+      "ticker": "NVDA",
+      "title": "Is Nvidia Stock a Trick or Treat?",
+      "category": "other",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Nvidia stock is correcting in recent weeks, down 15% from its high set earlier this month.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/nvidia-stock-trick-or-treat"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/nvidia-stock-trick-or-treat",
+          "published_date": "2026-10-30"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-10-30-b462963e6d01",
+      "ticker": "NVDA",
+      "title": "2 AI Stocks Poised to Surge on the Halloween Effect",
+      "category": "technology",
+      "importance": 2,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Micron and NVIDIA could benefit from the Halloween effect as AI demand, surging revenues and expanding margins strengthen their growth prospects.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/2-ai-stocks-poised-surge-halloween-effect"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/2-ai-stocks-poised-surge-halloween-effect",
+          "published_date": "2026-10-30"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-11-02-e4b6f3283561",
+      "ticker": "GOOGL",
+      "title": "Don't Overlook Alphabet (GOOGL) International Revenue Trends While Assessing the Stock",
+      "category": "financial",
+      "importance": 1,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Examine the evolution of Alphabet's (GOOGL) overseas revenue trends and their effects on Wall Street's forecasts and the stock's prospects.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/dont-overlook-alphabet-googl-international-revenue-trends-while-assessing-stock"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/dont-overlook-alphabet-googl-international-revenue-trends-while-assessing-stock",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "googl-2026-11-02-26f3e64571dd",
+      "ticker": "GOOGL",
+      "title": "Nvidia, Micron and Alphabet is part of Zacks Earnings Preview",
+      "category": "financial",
+      "importance": 1,
+      "confidence": 0.45,
+      "is_duplicate": true,
+      "fact_summary": "NVDA, MU and GOOGL headline this week's Zacks Earnings Preview, as strong earnings momentum and rising estimates shape the Q3 reporting season.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/nvidia-micron-and-alphabet-part-zacks-earnings-preview"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Zacks",
+          "publisher": "Zacks",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/nvidia-micron-and-alphabet-part-zacks-earnings-preview",
+          "published_date": "2026-11-02"
+        }
+      ],
+      "related_tickers": [
+        "NVDA"
+      ],
+      "related_companies": [
+        {
+          "ticker": "NVDA",
+          "company_name": "NVIDIA Corporation"
+        }
+      ]
+    },
+    {
+      "event_key": "googl-2026-10-30-703a43d2cae6",
+      "ticker": "GOOGL",
+      "title": "Stocks Close Lower as Alphabet Disappoints and Chip Stocks Fall",
+      "category": "technology",
+      "importance": 1,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "The S&P 500 Index ($SPX ) (SPY ) fell -0.30%, the Dow Jones Industrial Average ($DOWI ) (DIA ) fell -0.25%, and the Nasdaq 100 Index ($IUXX ) (QQQ ) fell -1.38%. December E-mini S&P futures (ESZ26 ) fell -0.87%, and December E-mini Nasdaq futures (NQZ26 ) fell -2.67%. US...",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/stocks-close-lower-alphabet-disappoints-and-chip-stocks-fall"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "Alphabet Inc.",
+      "sources": [
+        {
+          "name": "Nasdaq News / Barchart",
+          "publisher": "Barchart",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/stocks-close-lower-alphabet-disappoints-and-chip-stocks-fall",
+          "published_date": "2026-10-30"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    },
+    {
+      "event_key": "nvda-2026-11-01-4ad4c7422082",
+      "ticker": "NVDA",
+      "title": "Prediction: Nvidia Stock Is Going to Soar After Nov. 17",
+      "category": "financial",
+      "importance": 1,
+      "confidence": 0.45,
+      "is_duplicate": false,
+      "fact_summary": "Nvidia has guided for about $108 billion in third-quarter revenue, nearly double what it booked in the prior-year period, and Wall Street expects a bit more.",
+      "source_urls": [
+        "https://www.nasdaq.com/articles/prediction-nvidia-stock-going-soar-after-nov-17"
+      ],
+      "needs_verification": true,
+      "content_type": "opinion",
+      "mode": "rule",
+      "company_name": "NVIDIA Corporation",
+      "sources": [
+        {
+          "name": "Nasdaq News / The Motley Fool",
+          "publisher": "The Motley Fool",
+          "kind": "news",
+          "url": "https://www.nasdaq.com/articles/prediction-nvidia-stock-going-soar-after-nov-17",
+          "published_date": "2026-11-01"
+        }
+      ],
+      "related_tickers": [],
+      "related_companies": []
+    }
+  ]
+}

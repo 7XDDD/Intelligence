@@ -1,0 +1,21 @@
+{
+  "ticker": "NVDA",
+  "company_name": "NVIDIA Corporation",
+  "current_price": 207.1637,
+  "previous_close": 204.64,
+  "daily_close": null,
+  "price_date": null,
+  "quote_timestamp": "2026-11-02T10:55:00-05:00",
+  "quote_timestamp_display": "Nov 2, 2026 10:55 AM ET",
+  "market_status": "Open",
+  "market_phase": "open",
+  "market_phase_label": "交易中",
+  "change": 2.52,
+  "change_pct": 1.23,
+  "change_basis": "intraday",
+  "volume": 30724452.049482,
+  "currency": "USD",
+  "source": "api.nasdaq.com/api/quote",
+  "fetched_at": "2026-11-02T10:55:32.588683-05:00",
+  "warnings": []
+}

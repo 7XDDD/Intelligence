@@ -35,6 +35,23 @@ class LLMClient:
         self.max_tokens = int(llm_cfg.get("max_tokens", 1200))
         self.log_dir = Path(log_dir) if log_dir else None
         self.last_error: str | None = None
+        self.input_cost_per_million = float(llm_cfg.get("input_cost_per_million", 0) or 0)
+        self.output_cost_per_million = float(llm_cfg.get("output_cost_per_million", 0) or 0)
+        self.calls = 0
+        self.prompt_tokens = 0
+        self.completion_tokens = 0
+        self.total_tokens = 0
+        self.cost_usd = 0.0
+
+    def stats(self) -> dict[str, Any]:
+        return {
+            "calls": self.calls,
+            "prompt_tokens": self.prompt_tokens,
+            "completion_tokens": self.completion_tokens,
+            "total_tokens": self.total_tokens,
+            "cost_usd": round(self.cost_usd, 6),
+            "priced": bool(self.input_cost_per_million or self.output_cost_per_million),
+        }
 
     @property
     def available(self) -> bool:
@@ -110,6 +127,17 @@ class LLMClient:
         except (KeyError, IndexError, TypeError) as exc:
             raise LLMError(f"LLM 响应格式异常：{data}") from exc
         usage = data.get("usage") if isinstance(data.get("usage"), dict) else None
+        if usage:
+            prompt = int(usage.get("prompt_tokens") or 0)
+            completion = int(usage.get("completion_tokens") or 0)
+            self.calls += 1
+            self.prompt_tokens += prompt
+            self.completion_tokens += completion
+            self.total_tokens += int(usage.get("total_tokens") or (prompt + completion))
+            self.cost_usd += (
+                prompt / 1_000_000 * self.input_cost_per_million
+                + completion / 1_000_000 * self.output_cost_per_million
+            )
         return text, usage
 
     def _write_log(
@@ -128,6 +156,11 @@ class LLMClient:
         if not self.log_dir:
             return
         now = datetime.now(timezone.utc)
+        usage = usage or {}
+        cost = (
+            int(usage.get("prompt_tokens") or 0) / 1_000_000 * self.input_cost_per_million
+            + int(usage.get("completion_tokens") or 0) / 1_000_000 * self.output_cost_per_million
+        )
         entry = {
             "ts": now.isoformat(),
             "request_id": request_id,
@@ -136,7 +169,8 @@ class LLMClient:
             "model": self.model,
             "base_url": self.base_url,
             "duration_ms": int((time.time() - started) * 1000),
-            "usage": usage,
+            "usage": usage or None,
+            "cost_usd": round(cost, 6) if usage else None,
             "system_sha1": hashlib.sha1(system.encode("utf-8")).hexdigest()[:12],
             "request": {"system": system, "user": user},
             "response": response,

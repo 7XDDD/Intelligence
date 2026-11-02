@@ -9,6 +9,48 @@ from typing import Any
 from ..llm import LLMClient, LLMError
 
 
+def summarize_trends(
+    events: list[dict[str, Any]],
+    *,
+    llm: LLMClient,
+    prompts_dir: Path,
+    max_events: int = 40,
+) -> tuple[dict[str, list[str]] | None, list[str], bool]:
+    """跨公司趋势总结（LLM）。返回 (趋势, 错误, 是否使用 LLM)。"""
+    if not llm.available or not events:
+        return None, [], False
+    payload = [
+        {
+            "event_key": event.get("event_key"),
+            "ticker": event.get("ticker"),
+            "title": event.get("title"),
+            "category": event.get("category"),
+            "importance": event.get("importance"),
+            "fact_summary": (event.get("fact_summary") or "")[:200],
+        }
+        for event in sorted(events, key=lambda e: e.get("importance", 0), reverse=True)[:max_events]
+    ]
+    system_prompt = (prompts_dir / "trend.txt").read_text(encoding="utf-8")
+    try:
+        raw = llm.chat_json(
+            system_prompt,
+            json.dumps({"events": payload}, ensure_ascii=False, indent=1),
+            label="trend",
+        )
+    except LLMError as exc:
+        return None, [f"趋势总结失败：{exc}"], False
+    if not isinstance(raw, dict):
+        return None, ["趋势总结返回格式异常，已跳过"], False
+
+    cleaned: dict[str, list[str]] = {}
+    for key in ("technology_trends", "competition", "capital_signals", "watch_items"):
+        values = raw.get(key) or []
+        if not isinstance(values, list):
+            values = []
+        cleaned[key] = [str(value)[:300] for value in values[:4] if str(value).strip()]
+    return cleaned, [], True
+
+
 def analyze_events(
     events: list[dict[str, Any]],
     *,
