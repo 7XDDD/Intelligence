@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sqlite3
 import sys
 import time
@@ -19,7 +20,7 @@ from nasdaq_intel.pipeline.analyze import analyze_events, summarize_trends
 from nasdaq_intel.pipeline.classify import classify_clusters
 from nasdaq_intel.pipeline.normalize import cluster_items
 from nasdaq_intel.pipeline.report import build_report
-from nasdaq_intel.sources import filings, market, news, ranking
+from nasdaq_intel.sources import filings, fmp, market, news, ranking
 from nasdaq_intel.storage import Storage
 from nasdaq_intel import quality
 
@@ -301,6 +302,40 @@ def cmd_rank(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_fmp_check(args: argparse.Namespace) -> int:
+    cfg = load_config(args.config)
+    fmp_cfg = cfg["fmp"]
+    env_name = fmp_cfg.get("api_key_env", "FMP_API_KEY")
+    api_key = os.getenv(env_name, "").strip()
+    if not api_key:
+        print(f"未找到环境变量 {env_name}。")
+        print(f"请在 {Path(cfg['_root']) / '.env'} 写入：{env_name}=<你的 FMP Key>")
+        return 2
+
+    http = build_http(cfg)
+    symbol = args.symbol or fmp_cfg.get("verify_symbol", "AAPL")
+    try:
+        result = fmp.verify_key(
+            http,
+            api_key=api_key,
+            base_url=fmp_cfg.get("base_url", "https://financialmodelingprep.com"),
+            symbol=symbol,
+        )
+    except fmp.FMPError as exc:
+        print(f"FMP Key 验证失败：{exc}")
+        return 1
+
+    print("FMP Key 验证通过")
+    print(f"  Key    : {result['masked_key']}（已脱敏）")
+    print(f"  接口   : {result['endpoint']}")
+    print(
+        f"  {result['symbol']}  : {result['price']}"
+        f"（{result['exchange'] or '—'}，{result['timestamp']}）"
+    )
+    print(f"  耗时   : {result['latency_ms']}ms")
+    return 0
+
+
 def cmd_audit(args: argparse.Namespace) -> int:
     cfg = load_config(args.config)
     storage = Storage(resolve_path(cfg, "data_dir"), resolve_path(cfg, "cache_dir"))
@@ -466,6 +501,11 @@ def main(argv: list[str] | None = None) -> int:
     rank.add_argument("--top", type=int)
     rank.add_argument("--config")
     rank.set_defaults(func=cmd_rank)
+
+    fmp_check = sub.add_parser("fmp-check", help="验证 FMP API Key 是否可用")
+    fmp_check.add_argument("--symbol", help="用于验证的股票代码，默认取配置")
+    fmp_check.add_argument("--config")
+    fmp_check.set_defaults(func=cmd_fmp_check)
 
     audit = sub.add_parser("audit", help="查看 LLM 原始输入/输出日志")
     audit.add_argument("--date", help="日志日期（YYYY-MM-DD），默认今天")

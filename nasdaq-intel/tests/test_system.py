@@ -23,7 +23,7 @@ from nasdaq_intel.llm import LLMClient
 from nasdaq_intel.market_calendar import is_trading_day, latest_trading_day, market_phase, ny_today
 from nasdaq_intel.pipeline.normalize import cluster_items
 from nasdaq_intel.pipeline.report import build_report
-from nasdaq_intel.sources import market
+from nasdaq_intel.sources import fmp, market
 
 
 class CalendarTests(unittest.TestCase):
@@ -51,6 +51,14 @@ class FakeMarketHttp:
         if "historical" in url:
             return {"data": {"tradesTable": {"rows": self.rows}}}
         return {"data": self.quote}
+
+
+class FakeFmpHttp:
+    def __init__(self, payload) -> None:
+        self.payload = payload
+
+    def get_json(self, url: str, *, params=None, headers=None):
+        return self.payload
 
 
 def quote_payload(status: str = "Open", stamp: str = "Oct 30, 2026 3:59 PM ET") -> dict:
@@ -375,6 +383,49 @@ class LlmStatsTests(unittest.TestCase):
         self.assertEqual(stats["calls"], 2)
         self.assertEqual(stats["total_tokens"], 3000)
         self.assertAlmostEqual(stats["cost_usd"], 0.004)
+
+
+class FmpKeyTests(unittest.TestCase):
+    def test_mask_key(self) -> None:
+        self.assertEqual(fmp.mask_key("abcdefghijklmnop"), "abcd...mnop")
+        self.assertEqual(fmp.mask_key("short"), "*****")
+
+    def test_verify_stable_quote(self) -> None:
+        payload = [
+            {
+                "symbol": "AAPL",
+                "price": 270.12,
+                "exchange": "NASDAQ",
+                "timestamp": 1793572800,
+            }
+        ]
+        result = fmp.verify_key(
+            FakeFmpHttp(payload), api_key="abcd1234efgh5678", base_url="https://fmp.example"
+        )
+        self.assertEqual(result["endpoint"], "stable /quote")
+        self.assertEqual(result["symbol"], "AAPL")
+        self.assertEqual(result["masked_key"], "abcd...5678")
+        self.assertIn("T", result["timestamp"])
+
+    def test_verify_falls_back_to_legacy(self) -> None:
+        class TwoCallHttp:
+            def __init__(self) -> None:
+                self.calls = 0
+
+            def get_json(self, url, *, params=None, headers=None):
+                self.calls += 1
+                if self.calls == 1:
+                    raise HttpError("stable unavailable", url=url, status=404, permanent=True)
+                return [{"symbol": "AAPL", "price": 270.12}]
+
+        result = fmp.verify_key(
+            TwoCallHttp(), api_key="abcd1234efgh5678", base_url="https://fmp.example"
+        )
+        self.assertEqual(result["endpoint"], "legacy /api/v3/quote")
+
+    def test_verify_requires_key(self) -> None:
+        with self.assertRaises(fmp.FMPError):
+            fmp.verify_key(FakeFmpHttp([]), api_key="", base_url="https://fmp.example")
 
 
 if __name__ == "__main__":

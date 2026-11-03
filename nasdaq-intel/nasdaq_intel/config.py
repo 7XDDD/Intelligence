@@ -60,6 +60,11 @@ DEFAULTS: dict[str, Any] = {
         "history_days": 45,
         "cache_ttl_seconds": 900,
     },
+    "fmp": {
+        "base_url": "https://financialmodelingprep.com",
+        "api_key_env": "FMP_API_KEY",
+        "verify_symbol": "AAPL",
+    },
     "http": {
         "user_agent": (
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "

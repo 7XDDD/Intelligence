@@ -70,6 +70,12 @@ llm:
   input_cost_per_million: 0.0
   output_cost_per_million: 0.0
 
+fmp:
+  # FMP（Financial Modeling Prep）Key 只放在项目根目录 .env，不写进配置文件
+  base_url: https://financialmodelingprep.com
+  api_key_env: FMP_API_KEY
+  verify_symbol: AAPL
+
 market:
   # 历史日线回看天数（用于取前一交易日收盘价）
   history_days: 45
