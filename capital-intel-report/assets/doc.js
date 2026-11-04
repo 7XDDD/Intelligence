@@ -318,7 +318,10 @@
     if (!window.echarts) return;
     const instances = [];
     document.querySelectorAll("[data-chart]").forEach((block) => {
-      const canvas = block.querySelector(".chart-canvas");
+      // data-chart 既可能挂在 figure 外层，也可能直接挂在 .chart-canvas 上
+      const canvas = block.classList.contains("chart-canvas")
+        ? block
+        : block.querySelector(".chart-canvas");
       const dataId = block.getAttribute("data-data");
       const chartKind = block.getAttribute("data-chart");
       const initialType = block.getAttribute("data-type") || "line";

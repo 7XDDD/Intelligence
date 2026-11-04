@@ -144,53 +144,41 @@ def parse_event_category(md: str) -> list[dict]:
         line = line.strip()
         if "事件分布" not in line:
             continue
-        # 匹配 "类别 N 条" 模式
-        for cat, num in re.findall(r"([^\d,，（]+)\s+(\d+)\s*条", line):
-            cat = cat.strip().strip("，,（(")
+        # 先剥掉 "- 事件分布：" 前缀，避免首个类别被污染
+        body = line.split("事件分布", 1)[1]
+        body = re.sub(r"^[：:]\s*", "", body)
+        for cat, num in re.findall(r"([^\d,，、（(]+)\s+(\d+)\s*条", body):
+            cat = cat.strip(" ，,、（(")
             if cat:
                 results.append({"category": cat, "count": int(num)})
     return results
 
 
 def parse_event_by_company(md: str) -> list[dict]:
-    """从 ## 三 中的 "信息最集中的公司：GOOGL（19 条）..." 或 ## 二 中的各公司段落抽取事件量。
-    优先用 ## 三 的汇总行，若缺失则从 ## 二 的 "今日重要事件" 行解析。
+    """公司事件量排名。
+
+    数据源优先用 ## 三 的 "信息最集中的公司：GOOGL（19 条）、AMZN（18 条）..."，
+    并把 ## 二 中出现的其余公司补 0，保证排名图覆盖完整 10 家。
     """
     block3 = _section(md, "三、行业趋势与竞争格局")
-    results = []
+    counts: dict[str, int] = {}
     if block3:
         for line in block3.splitlines():
             m = re.search(r"信息最集中的公司[：:]\s*(.+)", line)
-            if m:
-                for sym, num in re.findall(r"([A-Z]{2,6})[^\d]*(\d+)\s*条", m.group(1)):
-                    results.append({"symbol": sym, "count": int(num)})
-    if results:
-        return results
-    # fallback: 从 ## 二 逐公司解析
-    block2 = _section(md, "二、公司动态")
-    if not block2:
+            if not m:
+                continue
+            for sym, num in re.findall(r"([A-Z]{2,6})[^\d]*(\d+)\s*条", m.group(1)):
+                counts[sym] = int(num)
+    if not counts:
         return []
-    sym_counter: dict[str, int] = {}
-    for line in block2.splitlines():
-        m = re.match(r"###\s+.*\(([A-Z]{2,6})\)", line)
-        if m:
-            sym = m.group(1)
-            sm = re.search(r"今日重要事件[：:]\s*S/A\s*(\d+)\s*条.*B\s*(\d+)\s*条", line + "\n" + _peek_next_lines(block2, line))
-            if sm:
-                sym_counter[sym] = int(sm.group(1)) + int(sm.group(2))
-            else:
-                sym_counter[sym] = 0
-    return [{"symbol": s, "count": c} for s, c in sym_counter.items()]
-
-
-def _peek_next_lines(text: str, current_line: str) -> str:
-    """在 text 中找 current_line 之后的 5 行（用来匹配跨行的 "今日重要事件" 行）。"""
-    lines = text.splitlines()
-    try:
-        idx = lines.index(current_line)
-    except ValueError:
-        return ""
-    return "\n".join(lines[idx:idx + 8])
+    # 补齐 ## 二 中列出的其它公司
+    block2 = _section(md, "二、公司动态")
+    if block2:
+        for line in block2.splitlines():
+            m = re.match(r"^###\s+.+?[（(]([A-Z]{2,6})[）)]", line.strip())
+            if m:
+                counts.setdefault(m.group(1), 0)
+    return [{"symbol": s, "count": c} for s, c in counts.items()]
 
 
 def parse_top_events(md: str) -> list[dict]:
